@@ -1,10 +1,18 @@
 <style>
 /* ==========================================================================
-   TURKS VE ANADOLU - WARCRAFT AUTHENTIC UI TEMASI
+   TURKS VE ANADOLU - WOW FOREVER KESİN ÇALIŞAN ARKA PLAN & UI
    ========================================================================== */
 .guild-guide-section {
-  padding: 70px 20px;
-  background: radial-gradient(circle at 50% 20%, #1a1512 0%, #0d0a08 70%, #050404 100%);
+  padding: 80px 20px 90px 20px;
+  background-color: #080706;
+  /* Yedekli güvenli CDN + Blizzard Keyart */
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(13, 10, 8, 0.78) 0%, rgba(5, 4, 4, 0.95) 75%, #050404 100%),
+    url('https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-zone-hyjal.png');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
   color: #dfcfb8;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
   box-sizing: border-box;
@@ -18,84 +26,178 @@
 .guide-container {
   max-width: 1260px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-/* WoW Başlık Alanı */
+/* WoW Forever Logo & Başlık Alanı */
 .guide-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
   position: relative;
+}
+.forever-logo-wrap {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wow-forever-logo-img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(235, 172, 78, 0.25));
+  transition: transform 0.3s ease;
+}
+.wow-forever-logo-img:hover {
+  transform: scale(1.02);
 }
 .guide-badge {
   display: inline-block;
-  background: linear-gradient(180deg, rgba(163, 44, 28, 0.45) 0%, rgba(68, 16, 10, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(163, 44, 28, 0.5) 0%, rgba(68, 16, 10, 0.7) 100%);
   color: #f3a46d;
   border: 1px solid #943224;
   box-shadow: 0 0 10px rgba(186, 24, 27, 0.3), inset 0 0 6px rgba(255, 120, 80, 0.2);
-  padding: 4px 18px;
+  padding: 5px 20px;
   border-radius: 4px;
   font-size: 0.74rem;
   letter-spacing: 2px;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .guide-header h2 {
   font-size: 2.3rem;
   color: #f7d58b;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 14px rgba(235, 172, 78, 0.3);
-  margin: 0 0 10px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 16px rgba(235, 172, 78, 0.4);
+  margin: 0 0 12px 0;
   letter-spacing: 0.5px;
 }
 .guide-header p {
-  color: #a89885;
+  color: #bfaea0;
   max-width: 680px;
   margin: 0 auto;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* Grid & WoW Kartları */
+/* Grid & Kart Yapısı */
 .guide-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 24px;
 }
 .guide-card {
-  background: linear-gradient(180deg, #1d1714 0%, #120e0c 100%);
+  background: linear-gradient(180deg, rgba(29, 23, 20, 0.94) 0%, rgba(18, 14, 12, 0.96) 100%);
   border: 1px solid #4a3828;
-  border-top: 1px solid #695039;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.6);
   border-radius: 8px;
-  padding: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .guide-card:hover {
-  transform: translateY(-3px);
-  border-color: #a37336;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.9), 0 0 12px rgba(163, 115, 54, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.95);
 }
 
-/* Kart Header */
+/* Kart Banner Görseli */
+.class-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  border-bottom: 2px solid #36281d;
+  background-color: #120e0c;
+}
+.class-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: contrast(1.1) brightness(0.9);
+  transition: transform 0.4s ease;
+}
+.guide-card:hover .class-hero-img {
+  transform: scale(1.05);
+}
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(18, 14, 12, 0.85) 90%, #1d1714 100%);
+}
+
+/* Kart İçeriği */
+.card-body {
+  padding: 16px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+/* Sınıf Renkleri */
+.class-druid   { border-top: 4px solid #FF7C0A; }
+.class-druid:hover { border-color: #FF7C0A; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(255, 124, 10, 0.35); }
+.class-druid h3 { color: #FF7C0A; text-shadow: 0 0 10px rgba(255, 124, 10, 0.4); }
+
+.class-warrior { border-top: 4px solid #C69B6D; }
+.class-warrior:hover { border-color: #C69B6D; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(198, 155, 109, 0.35); }
+.class-warrior h3 { color: #C69B6D; text-shadow: 0 0 10px rgba(198, 155, 109, 0.4); }
+
+.class-shaman  { border-top: 4px solid #0070DD; }
+.class-shaman:hover { border-color: #0070DD; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(0, 112, 221, 0.35); }
+.class-shaman h3 { color: #0070DD; text-shadow: 0 0 10px rgba(0, 112, 221, 0.4); }
+
+.class-paladin { border-top: 4px solid #F48CBA; }
+.class-paladin:hover { border-color: #F48CBA; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(244, 140, 186, 0.35); }
+.class-paladin h3 { color: #F48CBA; text-shadow: 0 0 10px rgba(244, 140, 186, 0.4); }
+
+.class-hunter  { border-top: 4px solid #AAD372; }
+.class-hunter:hover { border-color: #AAD372; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(170, 211, 114, 0.35); }
+.class-hunter h3 { color: #AAD372; text-shadow: 0 0 10px rgba(170, 211, 114, 0.4); }
+
+.class-rogue   { border-top: 4px solid #FFF468; }
+.class-rogue:hover { border-color: #FFF468; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(255, 244, 104, 0.35); }
+.class-rogue h3 { color: #FFF468; text-shadow: 0 0 10px rgba(255, 244, 104, 0.4); }
+
+.class-mage    { border-top: 4px solid #3FC7EB; }
+.class-mage:hover { border-color: #3FC7EB; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(63, 199, 235, 0.35); }
+.class-mage h3 { color: #3FC7EB; text-shadow: 0 0 10px rgba(63, 199, 235, 0.4); }
+
+.class-warlock { border-top: 4px solid #8788EE; }
+.class-warlock:hover { border-color: #8788EE; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(135, 136, 238, 0.35); }
+.class-warlock h3 { color: #8788EE; text-shadow: 0 0 10px rgba(135, 136, 238, 0.4); }
+
+.class-priest  { border-top: 4px solid #FFFFFF; }
+.class-priest:hover { border-color: #FFFFFF; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(255, 255, 255, 0.35); }
+.class-priest h3 { color: #FFFFFF; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
+
+/* Kart Başlığı ve Simgesi */
 .card-header {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   border-bottom: 1px solid #36281d;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
 }
 .class-main-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   border: 2px solid #826038;
   box-shadow: 0 2px 6px rgba(0,0,0,0.8);
   flex-shrink: 0;
+  background-color: #000;
 }
 .class-title-wrap {
   flex-grow: 1;
@@ -109,17 +211,14 @@
   border-radius: 3px;
   display: inline-block;
   margin-bottom: 4px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.5);
+  color: #dfcfb8;
 }
-.badge-tank { background: rgba(184, 91, 33, 0.2); color: #f89953; border-color: rgba(184, 91, 33, 0.4); }
-.badge-dps { background: rgba(186, 24, 27, 0.2); color: #ff6b6b; border-color: rgba(186, 24, 27, 0.4); }
-.badge-hybrid { background: rgba(29, 133, 168, 0.2); color: #62d6ff; border-color: rgba(29, 133, 168, 0.4); }
-
 .guide-card h3 {
   margin: 0;
-  font-size: 1.3rem;
-  color: #ffeed1;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
 }
 
 /* Spec ve Irk Satırları */
@@ -139,7 +238,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10, 8, 7, 0.6);
+  background: rgba(10, 8, 7, 0.75);
   border: 1px solid #2e2218;
   padding: 7px 12px;
   border-radius: 4px;
@@ -153,24 +252,25 @@
 .race-pick {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   color: #b5a491;
   font-size: 0.82rem;
 }
 .race-mini-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  border: 1px solid #735334;
+  border: 1px solid #826038;
   flex-shrink: 0;
+  background-color: #000;
 }
 
-/* Meslek Satırı */
+/* Meslek Rozetleri */
 .professions-line {
   font-size: 0.83rem;
   color: #a89784;
   margin-bottom: 12px;
-  background: rgba(8, 6, 5, 0.7);
+  background: rgba(8, 6, 5, 0.8);
   border: 1px solid #2b1f16;
   padding: 8px 12px;
   border-radius: 4px;
@@ -185,22 +285,54 @@
 .prof-badges-wrap {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .prof-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: #ffd899;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 .prof-mini-icon {
   width: 18px;
   height: 18px;
   border-radius: 3px;
-  border: 1px solid #826038;
+  flex-shrink: 0;
 }
 
-/* Açıklama & Analiz Blokları */
+.prof-engineering {
+  background: rgba(230, 126, 34, 0.15);
+  border: 1px solid rgba(230, 126, 34, 0.4);
+  color: #f39c12;
+}
+.prof-engineering .prof-mini-icon { border: 1px solid #f39c12; }
+
+.prof-blacksmithing {
+  background: rgba(149, 165, 166, 0.15);
+  border: 1px solid rgba(149, 165, 166, 0.4);
+  color: #bdc3c7;
+}
+.prof-blacksmithing .prof-mini-icon { border: 1px solid #bdc3c7; }
+
+.prof-leatherworking {
+  background: rgba(211, 84, 0, 0.15);
+  border: 1px solid rgba(211, 84, 0, 0.4);
+  color: #e67e22;
+}
+.prof-leatherworking .prof-mini-icon { border: 1px solid #e67e22; }
+
+.prof-tailoring {
+  background: rgba(155, 89, 182, 0.15);
+  border: 1px solid rgba(155, 89, 182, 0.4);
+  color: #bb86fc;
+}
+.prof-tailoring .prof-mini-icon { border: 1px solid #bb86fc; }
+
+/* Analiz & Açıklama */
 .guide-details {
   border-top: 1px solid #36281d;
   padding-top: 12px;
@@ -214,27 +346,17 @@
 }
 .detail-block strong {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 2px;
 }
-.detail-race strong {
-  color: #e8a86b;
-}
-.detail-race p {
-  margin: 0;
-  color: #bfa993;
-}
-.detail-prof strong {
-  color: #d1b877;
-}
-.detail-prof p {
-  margin: 0;
-  color: #a3917d;
-}
+.detail-race strong { color: #e8a86b; }
+.detail-race p { margin: 0; color: #bfa993; }
+.detail-prof strong { color: #d1b877; }
+.detail-prof p { margin: 0; color: #a3917d; }
 
-/* Sayfa Sonu İmzası */
+/* İmzalı Footer */
 .guide-footer-signature {
   margin-top: 60px;
   text-align: center;
@@ -255,7 +377,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(14, 11, 9, 0.8);
+  background: rgba(14, 11, 9, 0.85);
   border: 1px solid #3d2c1e;
   padding: 8px 22px;
   border-radius: 30px;
@@ -280,35 +402,17 @@
 
 /* Mobil Responsive */
 @media (max-width: 768px) {
-  .guild-guide-section {
-    padding: 45px 15px;
-  }
-  .guide-header h2 {
-    font-size: 1.7rem;
-  }
-  .guide-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .guide-card {
-    padding: 18px 15px;
-  }
+  .guild-guide-section { padding: 50px 15px 60px 15px; }
+  .wow-forever-logo-img { max-width: 250px; }
+  .guide-header h2 { font-size: 1.7rem; }
+  .guide-grid { grid-template-columns: 1fr; gap: 16px; }
+  .class-hero-banner { height: 120px; }
 }
 @media (max-width: 480px) {
-  .guide-header h2 {
-    font-size: 1.45rem;
-  }
-  .spec-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding: 8px 10px;
-  }
-  .professions-line {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
+  .wow-forever-logo-img { max-width: 210px; }
+  .guide-header h2 { font-size: 1.45rem; }
+  .spec-item { flex-direction: column; align-items: flex-start; gap: 4px; padding: 8px 10px; }
+  .professions-line { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
 </style>
 
@@ -316,8 +420,15 @@
 <section id="rehber" class="guild-guide-section">
   <div class="guide-container">
     
-    <!-- Başlık Alanı -->
+    <!-- WoW Forever Logo & Başlık Alanı -->
     <div class="guide-header">
+      <div class="forever-logo-wrap">
+        <img src="https://images.blz-contentstack.com/v3/assets/blt3452e3b114fab0cd/blt8ef398f62c8e27c7/6716a49dbd7293a74347781b/wow-forever-logo-desktop.webp" 
+             onerror="this.onerror=null; this.src='https://wow.zamimg.com/images/logos/classic.png';" 
+             referrerpolicy="no-referrer" 
+             alt="World of Warcraft: Forever" 
+             class="wow-forever-logo-img">
+      </div>
       <span class="guide-badge">KADRO VE TAKTİK DİSİPLİNİ</span>
       <h2>Turks ve Anadolu PvE Race ve Meslek Rehberi</h2>
       <p>Guildimizin raid hedeflerinde maksimum verim sağlamak adına her sınıfın rolüne, yetenek ağacına ve PvE mekaniklerine uygun ırk/meslek standartları aşağıda çıkartılmıştır.</p>
@@ -325,490 +436,544 @@
 
     <div class="guide-grid">
 
-      <!-- DRUID -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_druid.jpg" alt="Druid" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-hybrid">Hibrit · Tank / Şifacı / DPS</span>
-              <h3>Druid</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Ayı Tank (Feral Bear)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_tauren_male.jpg" alt="Tauren" class="race-mini-icon">
-                <span>Tauren</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Fiziksel DPS (Feral Cat)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_tauren_male.jpg" alt="Tauren" class="race-mini-icon">
-                <span>Tauren</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Büyücü DPS (Balance)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Skyborne" class="race-mini-icon">
-                <span>Skyborne / Troll</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Şifacı (Restoration)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_tauren_male.jpg" alt="Tauren" class="race-mini-icon">
-                <span>Tauren / Skyborne</span>
-              </div>
-            </div>
-          </div>
+      <!-- 1. DRUID (#FF7C0A) -->
+      <article class="guide-card class-druid">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-druid.png" referrerpolicy="no-referrer" alt="Druid Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
         </div>
-
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_leatherworking.jpg" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
-            </div>
-          </div>
-          
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Ayı formunda Tauren'in getirdiği ek sağlık havuzu ölümcül vuruşları absorbe etmede benzersizdir. Balance tarafında ise Skyborne/Troll haste yeteneği hantal cast sürelerini tabana indirerek büyü akışını hızlandırır.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Mühendislik hareket ve patlayıcı desteği sağlarken, Dericilik (LW) gruba basılan Drums rotasyonunu korur ve Feral formlarına özel zırh setlerini erkenden sunar.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- WARRIOR -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_warrior.jpg" alt="Warrior" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-tank">Tank & Yakın Dövüş DPS</span>
-              <h3>Warrior</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Ana / Yan Tank (Protection)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_tauren_male.jpg" alt="Tauren" class="race-mini-icon">
-                <span>Tauren</span>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg" referrerpolicy="no-referrer" alt="Druid" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Hibrit · Tank / Şifacı / DPS</span>
+                <h3>Druid</h3>
               </div>
             </div>
-            <div class="spec-item">
-              <span class="spec-name">Yakın Dövüş DPS (Fury / Arms)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_orc_male.jpg" alt="Orc" class="race-mini-icon">
-                <span>Orc</span>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Ayı Tank (Feral Bear)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" referrerpolicy="no-referrer" alt="Tauren" class="race-mini-icon">
+                  <span>Tauren</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Fiziksel DPS (Feral Cat)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" referrerpolicy="no-referrer" alt="Tauren" class="race-mini-icon">
+                  <span>Tauren</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Büyücü DPS (Balance)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Skyborne" class="race-mini-icon">
+                  <span>Skyborne / Troll</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Şifacı (Restoration)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" referrerpolicy="no-referrer" alt="Tauren" class="race-mini-icon">
+                  <span>Tauren / Skyborne</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_blacksmithing.jpg" alt="Blacksmithing" class="prof-mini-icon"> Blacksmithing</span>
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" referrerpolicy="no-referrer" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
+              </div>
             </div>
-          </div>
-
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Orc balta yetkinliği sayesinde glance vuruş hasar kaybı asgariye iner ve Blood Fury patlama pencerelerinde rekor DPS sağlar. Tauren ise tank spike hasarlarında efektif can barajını korur.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Demircilik erken aşamada kılıç/balta ve plate zırh avantajı oluşturur; Mühendislik ise rage üretimini destekleyen ve add paketlerini eriten bombalar sağlar.</p>
+            
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Ayı formunda Tauren'in getirdiği ek sağlık havuzu ölümcül vuruşları absorbe etmede benzersizdir. Balance tarafında ise Skyborne/Troll haste yeteneği hantal cast sürelerini tabana indirerek büyü akışını hızlandırır.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Mühendislik hareket ve patlayıcı desteği sağlarken, Dericilik (LW) gruba basılan Drums rotasyonunu korur ve Feral formlarına özel zırh setlerini erkenden sunar.</p>
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- SHAMAN -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_shaman.jpg" alt="Shaman" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-hybrid">Şifacı & Yakın / Uzak DPS</span>
-              <h3>Shaman</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Grup Şifacısı (Restoration)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Troll" class="race-mini-icon">
-                <span>Troll</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Yakın Dövüş (Enhancement)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_orc_male.jpg" alt="Orc" class="race-mini-icon">
-                <span>Orc</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Menzilli Büyücü (Elemental)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Troll" class="race-mini-icon">
-                <span>Troll</span>
-              </div>
-            </div>
-          </div>
+      <!-- 2. WARRIOR (#C69B6D) -->
+      <article class="guide-card class-warrior">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-warrior.png" referrerpolicy="no-referrer" alt="Warrior Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
         </div>
-
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_leatherworking.jpg" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
-            </div>
-          </div>
-
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Troll Berserking, ani raid çökmelerinde Chain Heal cast süresini kısaltarak hayat kurtarır. Enhancement tarafında ise Orc ırkı Windfury patlamalarını doğrudan besler.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Shaman totem desteğinin yanı sıra Leatherworking ile raid'e ekstra Drums rotasyonu katar. Mühendislik ise pozisyon alma ve mekanik kurtarmada esneklik sağlar.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- PALADIN -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_paladin.jpg" alt="Paladin" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-hybrid">Çok Yönlü Roller</span>
-              <h3>Paladin</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Kutsal Hasar (Retribution)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_bloodelf_male.jpg" alt="Blood Elf" class="race-mini-icon">
-                <span>Blood Elf</span>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_warrior.jpg" referrerpolicy="no-referrer" alt="Warrior" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Tank & Yakın Dövüş DPS</span>
+                <h3>Warrior</h3>
               </div>
             </div>
-            <div class="spec-item">
-              <span class="spec-name">Şifa / Kalkan (Holy / Prot)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_bloodelf_female.jpg" alt="Blood Elf" class="race-mini-icon">
-                <span>Blood Elf</span>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Ana / Yan Tank (Protection)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" referrerpolicy="no-referrer" alt="Tauren" class="race-mini-icon">
+                  <span>Tauren</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Yakın Dövüş DPS (Fury / Arms)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" referrerpolicy="no-referrer" alt="Orc" class="race-mini-icon">
+                  <span>Orc</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_blacksmithing.jpg" alt="Blacksmithing" class="prof-mini-icon"> Blacksmithing</span>
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-blacksmithing"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" referrerpolicy="no-referrer" alt="Blacksmithing" class="prof-mini-icon"> Blacksmithing</span>
+              </div>
             </div>
-          </div>
 
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Horde tarafında Paladin oynayabilen tek seçenek Blood Elf'tir; ancak Arcane Torrent ile sağlanan anlık mana iadesi ve alan susturma kritik encounter'larda büyük fark yaratır.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Blacksmithing ile crafted silah ve plate BiS parçaları hızla temin edilirken, Mühendislik tanklıkta kitle kontrol ve aggro toplama kabiliyetini pekiştirir.</p>
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Orc balta yetkinliği sayesinde glance vuruş hasar kaybı asgariye iner ve Blood Fury patlama pencerelerinde rekor DPS sağlar. Tauren ise tank spike hasarlarında efektif can barajını korur.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Demircilik erken aşamada kılıç/balta ve plate zırh avantajı oluşturur; Mühendislik ise rage üretimini destekleyen ve add paketlerini eriten bombalar sağlar.</p>
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- HUNTER -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_hunter.jpg" alt="Hunter" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-dps">Menzilli Fiziksel DPS</span>
-              <h3>Hunter</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Nişancılık (Marksmanship)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Troll" class="race-mini-icon">
-                <span>Troll</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Hayvan Terbiyesi (BM)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_orc_male.jpg" alt="Orc" class="race-mini-icon">
-                <span>Orc</span>
-              </div>
-            </div>
-          </div>
+      <!-- 3. SHAMAN (#0070DD) -->
+      <article class="guide-card class-shaman">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-shaman.png" referrerpolicy="no-referrer" alt="Shaman Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
         </div>
-
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_leatherworking.jpg" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
-            </div>
-          </div>
-
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Troll yay uzmanlığı ve Haste artışı saf menzil vuruş hızını doğrudan besler. Pet odaklı Beast Mastery buildlerinde ise Orc'un Command pasifi hasarı belirgin biçimde öne çıkarır.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Mühendisliğin sağladığı yüksek seviye mühimmatlar (ok/mermi) ve dürbünler DPS tavanını oluşturur. Dericilik ise kişisel zırh kitleri ve grup içi rotasyon için vazgeçilmezdir.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ROGUE -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_rogue.jpg" alt="Rogue" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-dps">Yakın Dövüş Suikastçı</span>
-              <h3>Rogue</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Sürekli Hasar (Combat)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_orc_male.jpg" alt="Orc" class="race-mini-icon">
-                <span>Orc</span>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_shaman.jpg" referrerpolicy="no-referrer" alt="Shaman" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Şifacı & Yakın / Uzak DPS</span>
+                <h3>Shaman</h3>
               </div>
             </div>
-            <div class="spec-item">
-              <span class="spec-name">Hızlı Dilimleme (Daggers)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Troll" class="race-mini-icon">
-                <span>Troll</span>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Grup Şifacısı (Restoration)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Troll" class="race-mini-icon">
+                  <span>Troll</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Yakın Dövüş (Enhancement)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" referrerpolicy="no-referrer" alt="Orc" class="race-mini-icon">
+                  <span>Orc</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Menzilli Büyücü (Elemental)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Troll" class="race-mini-icon">
+                  <span>Troll</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_leatherworking.jpg" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" referrerpolicy="no-referrer" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
+              </div>
             </div>
-          </div>
 
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Orc Blood Fury saldırı gücünü devasa oranda artırarak burst pencerelerinde üstünlük kurar. Troll ise yüksek vuruş frekansı ile zehir sürümünü ve enerji akışını sürekli kılar.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Mühendislik bombaları Rogue'un zayıf olduğu alan (AoE) hasarını kapatır; Dericilik ise saldırı gücü sağlayan zırh takviyeleriyle kişisel hasarı destekler.</p>
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Troll Berserking, ani raid çökmelerinde Chain Heal cast süresini kısaltarak hayat kurtarır. Enhancement tarafında ise Orc ırkı Windfury patlamalarını doğrudan besler.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Shaman totem desteğinin yanı sıra Leatherworking ile raid'e ekstra Drums rotasyonu katar. Mühendislik ise pozisyon alma ve mekanik kurtarmada esneklik sağlar.</p>
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- MAGE -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_mage.jpg" alt="Mage" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-dps">Menzilli Büyücü DPS</span>
-              <h3>Mage</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Raid Ana Hasar (Fire / Arcane)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Troll" class="race-mini-icon">
-                <span>Troll</span>
-              </div>
-            </div>
-            <div class="spec-item">
-              <span class="spec-name">Kontrol & Güvenlik (Frost)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_undead_male.jpg" alt="Undead" class="race-mini-icon">
-                <span>Undead</span>
-              </div>
-            </div>
-          </div>
+      <!-- 4. PALADIN (#F48CBA) -->
+      <article class="guide-card class-paladin">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-paladin.png" referrerpolicy="no-referrer" alt="Paladin Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
         </div>
-
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_tailoring.jpg" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
-            </div>
-          </div>
-
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Troll Berserking ile Combustion veya Arcane Power döngüsüne ekstra büyü sığdırmak PvE hasar çizgisini tavana vurur. Undead ise bireysel hayatta kalma ve CC bozma rahatlığı sunar.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Terzilik (Tailoring) büyü gücü odaklı erken setleri üretmeyi sağlarken, Mühendislik manasız kalınan anlarda bomba rotasyonu ve hızlı pozisyon alma imkânı tanır.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- WARLOCK -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_warlock.jpg" alt="Warlock" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-dps">Menzilli Kara Büyücü</span>
-              <h3>Warlock</h3>
-            </div>
-          </div>
-
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Ateş & Gölge Patlaması (Destro)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_orc_male.jpg" alt="Orc" class="race-mini-icon">
-                <span>Orc</span>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_paladin.jpg" referrerpolicy="no-referrer" alt="Paladin" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Çok Yönlü Roller</span>
+                <h3>Paladin</h3>
               </div>
             </div>
-            <div class="spec-item">
-              <span class="spec-name">Zaman Yayılımlı Hasar (Affli)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_undead_male.jpg" alt="Undead" class="race-mini-icon">
-                <span>Undead</span>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Kutsal Hasar (Retribution)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_bloodelf_male.jpg" referrerpolicy="no-referrer" alt="Blood Elf" class="race-mini-icon">
+                  <span>Blood Elf</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Şifa / Kalkan (Holy / Prot)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_bloodelf_female.jpg" referrerpolicy="no-referrer" alt="Blood Elf" class="race-mini-icon">
+                  <span>Blood Elf</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_tailoring.jpg" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-blacksmithing"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" referrerpolicy="no-referrer" alt="Blacksmithing" class="prof-mini-icon"> Blacksmithing</span>
+              </div>
             </div>
-          </div>
 
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Orc hem demon petlerine kalıcı hasar bonusu kazandırır hem de Blood Fury sayesinde doğrudan Shadow ve Fire büyü hasarını katlar. Undead ise kritik mekaniklerde Fear kırma avantajı sunar.</p>
-            </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Tailoring ile erken aşamadaki Shadoweave/Spellstrike gibi kumaş BiS parçalar hızla hazırlanır; Mühendislik ise raid mekaniklerinde hayatta kalma ve AoE burst sağlar.</p>
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Horde tarafında Paladin oynayabilen tek seçenek Blood Elf'tir; ancak Arcane Torrent ile sağlanan anlık mana iadesi ve alan susturma kritik encounter'larda büyük fark yaratır.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Blacksmithing ile crafted silah ve plate BiS parçaları hızla temin edilirken, Mühendislik tanklıkta kitle kontrol ve aggro toplama kabiliyetini pekiştirir.</p>
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- PRIEST -->
-      <article class="guide-card">
-        <div>
-          <div class="card-header">
-            <img src="https://render.worldofwarcraft.com/classic/icons/56/classicon_priest.jpg" alt="Priest" class="class-main-icon">
-            <div class="class-title-wrap">
-              <span class="class-role-badge badge-hybrid">Şifacı & Gölge Rahibi</span>
-              <h3>Priest</h3>
+      <!-- 5. HUNTER (#AAD372) -->
+      <article class="guide-card class-hunter">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-hunter.png" referrerpolicy="no-referrer" alt="Hunter Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg" referrerpolicy="no-referrer" alt="Hunter" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Menzilli Fiziksel DPS</span>
+                <h3>Hunter</h3>
+              </div>
+            </div>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Nişancılık (Marksmanship)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Troll" class="race-mini-icon">
+                  <span>Troll</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Hayvan Terbiyesi (BM)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" referrerpolicy="no-referrer" alt="Orc" class="race-mini-icon">
+                  <span>Orc</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="spec-race-breakdown">
-            <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
-            <div class="spec-item">
-              <span class="spec-name">Raid Şifacısı (Holy / Disc)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_troll_male.jpg" alt="Troll" class="race-mini-icon">
-                <span>Troll</span>
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" referrerpolicy="no-referrer" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
               </div>
             </div>
-            <div class="spec-item">
-              <span class="spec-name">Gölge Büyüsü (Shadow)</span>
-              <div class="race-pick">
-                <img src="https://render.worldofwarcraft.com/classic/icons/56/race_undead_male.jpg" alt="Undead" class="race-mini-icon">
-                <span>Undead</span>
+
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Troll yay uzmanlığı ve Haste artışı saf menzil vuruş hızını doğrudan besler. Pet odaklı Beast Mastery buildlerinde ise Orc'un Command pasifi hasarı belirgin biçimde öne çıkarır.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Mühendisliğin sağladığı yüksek seviye mühimmatlar ve dürbünler DPS tavanını oluşturur. Dericilik ise kişisel zırh kitleri ve grup içi rotasyon için vazgeçilmezdir.</p>
               </div>
             </div>
           </div>
         </div>
+      </article>
 
-        <div>
-          <div class="professions-line">
-            <strong>Önerilen Meslekler:</strong>
-            <div class="prof-badges-wrap">
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_engineering.jpg" alt="Engineering" class="prof-mini-icon"> Engineering</span>
-              <span class="prof-badge"><img src="https://render.worldofwarcraft.com/classic/icons/56/trade_tailoring.jpg" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
+      <!-- 6. ROGUE (#FFF468) -->
+      <article class="guide-card class-rogue">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-rogue.png" referrerpolicy="no-referrer" alt="Rogue Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg" referrerpolicy="no-referrer" alt="Rogue" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Yakın Dövüş Suikastçı</span>
+                <h3>Rogue</h3>
+              </div>
+            </div>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Sürekli Hasar (Combat)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" referrerpolicy="no-referrer" alt="Orc" class="race-mini-icon">
+                  <span>Orc</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Hızlı Dilimleme (Daggers)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Troll" class="race-mini-icon">
+                  <span>Troll</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="guide-details">
-            <div class="detail-block detail-race">
-              <strong>Neden Bu Irk Seçimi?</strong>
-              <p>Troll Berserking, tank canının kritik eşiğe indiği anlarda şifa basma süresini en aza indirir. Undead ise Shadow rolünde Devouring Plague ile doğrudan ilave DoT hasarı yaratır.</p>
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" referrerpolicy="no-referrer" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
+              </div>
             </div>
-            <div class="detail-block detail-prof">
-              <strong>Neden Bu Meslekler?</strong>
-              <p>Terzilik yüksek Spirit ve mana tazelemesi sağlayan parçalar üretir; Mühendislik ise kısıtlı hareket kabiliyetine sahip Priest için hayati kaçış ve mekanik çözümü sunar.</p>
+
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Orc Blood Fury saldırı gücünü devasa oranda artırarak burst pencerelerinde üstünlük kurar. Troll ise yüksek vuruş frekansı ile zehir sürümünü ve enerji akışını sürekli kılar.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Mühendislik bombaları Rogue'un zayıf olduğu alan (AoE) hasarını kapatır; Dericilik ise saldırı gücü sağlayan zırh takviyeleriyle kişisel hasarı destekler.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. MAGE (#3FC7EB) -->
+      <article class="guide-card class-mage">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-mage.png" referrerpolicy="no-referrer" alt="Mage Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_mage.jpg" referrerpolicy="no-referrer" alt="Mage" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Menzilli Büyücü DPS</span>
+                <h3>Mage</h3>
+              </div>
+            </div>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Raid Ana Hasar (Fire / Arcane)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Troll" class="race-mini-icon">
+                  <span>Troll</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Kontrol & Güvenlik (Frost)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_undead_male.jpg" referrerpolicy="no-referrer" alt="Undead" class="race-mini-icon">
+                  <span>Undead</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-tailoring"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" referrerpolicy="no-referrer" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
+              </div>
+            </div>
+
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Troll Berserking ile Combustion veya Arcane Power döngüsüne ekstra büyü sığdırmak PvE hasar çizgisini tavana vurur. Undead ise bireysel hayatta kalma ve CC bozma rahatlığı sunar.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Terzilik (Tailoring) büyü gücü odaklı erken setleri üretmeyi sağlarken, Mühendislik manasız kalınan anlarda bomba rotasyonu ve hızlı pozisyon alma imkânı tanır.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. WARLOCK (#8788EE) -->
+      <article class="guide-card class-warlock">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-warlock.png" referrerpolicy="no-referrer" alt="Warlock Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_warlock.jpg" referrerpolicy="no-referrer" alt="Warlock" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Menzilli Kara Büyücü</span>
+                <h3>Warlock</h3>
+              </div>
+            </div>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Ateş & Gölge Patlaması (Destro)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" referrerpolicy="no-referrer" alt="Orc" class="race-mini-icon">
+                  <span>Orc</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Zaman Yayılımlı Hasar (Affli)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_undead_male.jpg" referrerpolicy="no-referrer" alt="Undead" class="race-mini-icon">
+                  <span>Undead</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-tailoring"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" referrerpolicy="no-referrer" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
+              </div>
+            </div>
+
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Orc hem demon petlerine kalıcı hasar bonusu kazandırır hem de Blood Fury sayesinde doğrudan Shadow ve Fire büyü hasarını katlar. Undead ise kritik mekaniklerde Fear kırma avantajı sunar.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Tailoring ile erken aşamadaki Shadoweave/Spellstrike gibi kumaş BiS parçalar hızla hazırlanır; Mühendislik ise raid mekaniklerinde hayatta kalma ve AoE burst sağlar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9. PRIEST (#FFFFFF) -->
+      <article class="guide-card class-priest">
+        <div class="class-hero-banner">
+          <img src="https://wow.zamimg.com/images/wow/journal/ui-ej-lorebg-priest.png" referrerpolicy="no-referrer" alt="Priest Hero" class="class-hero-img">
+          <div class="banner-overlay"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-header">
+              <img src="https://wow.zamimg.com/images/wow/icons/large/classicon_priest.jpg" referrerpolicy="no-referrer" alt="Priest" class="class-main-icon">
+              <div class="class-title-wrap">
+                <span class="class-role-badge">Şifacı & Gölge Rahibi</span>
+                <h3>Priest</h3>
+              </div>
+            </div>
+
+            <div class="spec-race-breakdown">
+              <span class="breakdown-title">Rol & Irk Eşleşmesi</span>
+              <div class="spec-item">
+                <span class="spec-name">Raid Şifacısı (Holy / Disc)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" referrerpolicy="no-referrer" alt="Troll" class="race-mini-icon">
+                  <span>Troll</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <span class="spec-name">Gölge Büyüsü (Shadow)</span>
+                <div class="race-pick">
+                  <img src="https://wow.zamimg.com/images/wow/icons/large/race_undead_male.jpg" referrerpolicy="no-referrer" alt="Undead" class="race-mini-icon">
+                  <span>Undead</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="professions-line">
+              <strong>Önerilen Meslekler:</strong>
+              <div class="prof-badges-wrap">
+                <span class="prof-badge prof-engineering"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" referrerpolicy="no-referrer" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-tailoring"><img src="https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" referrerpolicy="no-referrer" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
+              </div>
+            </div>
+
+            <div class="guide-details">
+              <div class="detail-block detail-race">
+                <strong>Neden Bu Irk Seçimi?</strong>
+                <p>Troll Berserking, tank canının kritik eşiğe indiği anlarda şifa basma süresini en aza indirir. Undead ise Shadow rolünde Devouring Plague ile doğrudan ilave DoT hasarı yaratır.</p>
+              </div>
+              <div class="detail-block detail-prof">
+                <strong>Neden Bu Meslekler?</strong>
+                <p>Terzilik yüksek Spirit ve mana tazelemesi sağlayan parçalar üretir; Mühendislik ise kısıtlı hareket kabiliyetine sahip Priest için hayati kaçış ve mekanik çözümü sunar.</p>
+              </div>
             </div>
           </div>
         </div>
