@@ -1,6 +1,6 @@
 <style>
 /* ==========================================================================
-   SAYFA GENELİ SIFIRLAMA (BEYAZ ÇERÇEVEYİ KALDIRAN KISIM)
+   SAYFA GENELİ SIFIRLAMA
    ========================================================================== */
 html, body {
   margin: 0 !important;
@@ -25,10 +25,10 @@ html, body {
     linear-gradient(90deg, rgba(5, 4, 4, 0.25) 0%, rgba(10, 8, 7, 0.75) 35%, rgba(5, 4, 4, 0.95) 100%),
     radial-gradient(circle at 50% 10%, rgba(20, 15, 12, 0.45) 0%, rgba(5, 4, 4, 0.9) 80%),
     url('assets/img/wow-forever-bg.webp');
-  background-position: left top;
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: #dfcfb8;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   box-sizing: border-box;
@@ -76,12 +76,12 @@ html, body {
   filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(0, 162, 232, 0.4));
 }
 
-/* 9 Sınıf Kart Grid */
+/* 9 Sınıf Kart Grid (Masaüstü: 3 Sütun) */
 .guide-class-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 .class-box {
   border-radius: 8px;
@@ -263,7 +263,6 @@ html, body {
   line-height: 1.1;
 }
 
-/* Irk Altı Spec İsimleri ve Simgeleri */
 .race-avatar-specs-list {
   display: flex;
   flex-direction: column;
@@ -327,40 +326,55 @@ html, body {
   border-left: 2px solid #826038;
 }
 
-/* Alt 3 Kutulu Panel Düzeni */
-.bottom-panels-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* ==========================================================================
+   ALT PANELLER (MASAÜSTÜNDE HEPSİ ALT ALTA VE TAM GENİŞLİKTE)
+   ========================================================================== */
+.bottom-panels-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
+
 .bottom-panel {
   background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
   border: 1px solid #3d2f24;
   border-radius: 8px;
-  padding: 16px 18px;
+  padding: 18px 22px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.bottom-panel h3 {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #f7d58b;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin: 0 0 14px 0;
+
+/* Panel Başlık Alanı */
+.bottom-panel .panel-header-block {
+  width: 100%;
+  margin-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 8px;
 }
+.bottom-panel h3 {
+  font-size: 1.10rem;
+  font-weight: 800;
+  color: #f7d58b;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0;
+  display: block;
+}
 
-/* Panel 1 */
+/* Panel 1: Sınıf Bazlı Analiz Listesi */
 .panel-race-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 .panel-race-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
 }
 .panel-race-item img {
   width: 26px;
@@ -373,27 +387,28 @@ html, body {
 }
 .panel-race-info strong {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: #dfcfb8;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 .panel-race-info p {
   margin: 0;
-  font-size: 0.74rem;
-  line-height: 1.3;
+  font-size: 0.76rem;
+  line-height: 1.35;
   color: #9c8c7d;
 }
 
-/* Panel 2 */
+/* Panel 2: Meslek Sinerjisi */
 .panel-prof-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 .panel-prof-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
 }
 .panel-prof-item img {
   width: 26px;
@@ -405,20 +420,20 @@ html, body {
 }
 .panel-prof-info strong {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: #dfcfb8;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 .panel-prof-info p {
   margin: 0;
-  font-size: 0.74rem;
-  line-height: 1.3;
+  font-size: 0.76rem;
+  line-height: 1.35;
   color: #9c8c7d;
 }
 
-/* Panel 3 */
+/* Panel 3: Hazırlık Prensipleri */
 .panel-notes-header {
-  font-size: 0.78rem;
+  font-size: 0.80rem;
   color: #c4b5a5;
   margin-bottom: 10px;
   font-weight: 600;
@@ -434,9 +449,9 @@ html, body {
 .panel-checklist li {
   position: relative;
   padding-left: 22px;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: #b8a898;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 .panel-checklist li::before {
   content: "✓";
@@ -453,6 +468,13 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bottom-panels-paired {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
 }
 
 /* Discord İmzası */
@@ -507,17 +529,105 @@ html, body {
   fill: currentColor;
 }
 
-/* Responsive */
+/* ==========================================================================
+   YALNIZCA MOBİL & TABLET UYARLAMASI (<= 1100px)
+   ========================================================================== */
 @media (max-width: 1100px) {
-  .guide-class-grid { grid-template-columns: repeat(2, 1fr); }
-  .bottom-panels-grid { grid-template-columns: 1fr; }
+  .guide-class-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    display: contents;
+  }
+
+  .guide-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .guide-top-bar {
+    grid-column: 1 / -1;
+    order: 1;
+  }
+
+  .cb-warrior { order: 2; }
+  .cb-paladin { order: 3; }
+  .cb-rogue   { order: 4; }
+  .cb-hunter  { order: 5; }
+  .cb-priest  { order: 6; }
+  .cb-shaman  { order: 7; }
+  .cb-mage    { order: 8; }
+  .cb-warlock { order: 9; }
+  .cb-druid   { order: 10; }
+
+  /* Sınıf Bazlı Analiz: YALNIZCA MOBİLDE Druid'in yanına (11. sıra) geçer */
+  #panel-sinif-analiz {
+    display: flex !important;
+    flex-direction: column !important;
+    order: 11 !important;
+    margin: 0 !important;
+    padding: 14px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+  }
+
+  #panel-sinif-analiz .panel-header-block {
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+  }
+
+  #panel-sinif-analiz h3 {
+    font-size: 1.05rem;
+  }
+
+  .bottom-panels-wrapper {
+    grid-column: 1 / -1;
+    order: 12;
+    display: contents;
+  }
+
+  /* Meslek Sinerjisi ve Hazırlık Prensipleri mobilde yan yana 2 kutu olur */
+  .bottom-panels-paired {
+    grid-column: 1 / -1;
+    order: 13;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px;
+  }
+
+  .guide-signature-wrap {
+    grid-column: 1 / -1;
+    order: 14;
+  }
 }
+
 @media (max-width: 768px) {
-  .guide-top-bar { flex-direction: column; align-items: flex-start; gap: 15px; }
-  .top-bar-right { text-align: left; }
-  .top-bar-logo { max-width: 200px; }
-  .guide-class-grid { grid-template-columns: 1fr; }
-  .cb-body { grid-template-columns: 1fr; }
+  .guild-guide-section {
+    padding: 35px 12px 50px 12px;
+  }
+  .guide-container {
+    gap: 10px;
+  }
+  .guide-top-bar { 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    gap: 15px; 
+  }
+  .top-bar-left h2 { font-size: 1.7rem; }
+  .top-bar-right { text-align: center; }
+  .top-bar-logo { max-width: 180px; }
+
+  .cb-body { grid-template-columns: 95px 1fr; gap: 8px; }
+  .race-avatar-box { min-width: 68px; padding: 3px 4px; }
+  .race-avatar-box img.race-img { width: 28px; height: 28px; }
+  
+  .bottom-panels-paired {
+    gap: 10px !important;
+  }
+  .bottom-panel { padding: 12px; }
+  .bottom-panel h3 { font-size: 0.90rem; margin-bottom: 8px; }
+  .panel-race-info strong, .panel-prof-info strong { font-size: 0.74rem; }
+  .panel-race-info p, .panel-prof-info p { font-size: 0.67rem; }
+  .panel-checklist li { font-size: 0.67rem; padding-left: 17px; }
 }
 </style>
 
@@ -536,7 +646,7 @@ html, body {
       </div>
     </div>
 
-    <!-- 9 Sınıf Kutuları -->
+    <!-- 9 Sınıf Kartı -->
     <div class="guide-class-grid">
 
       <!-- 1. WARRIOR -->
@@ -1133,12 +1243,14 @@ html, body {
 
     </div>
 
-    <!-- Yanyana 3 Kutulu Alt Bölüm -->
-    <div class="bottom-panels-grid">
+    <!-- MASAÜSTÜNDE ALT ALTA 3 SIRA DURAN PANELLER -->
+    <div class="bottom-panels-wrapper">
 
-      <!-- 1. KUTU: SINIF BAZLI ANALİZ -->
-      <div class="bottom-panel">
-        <h3>Sınıf Bazlı Analiz</h3>
+      <!-- 1. KUTU: SINIF BAZLI ANALİZ (Masaüstünde tam genişlikte yatay panel, mobilde Druid'in yanına fırlar) -->
+      <div class="bottom-panel" id="panel-sinif-analiz">
+        <div class="panel-header-block">
+          <h3>Sınıf Bazlı Analiz</h3>
+        </div>
         <div class="panel-race-list">
           <div class="panel-race-item">
             <img src="assets/img/race_skyborne_male.webp" alt="Skyborne">
@@ -1178,57 +1290,66 @@ html, body {
         </div>
       </div>
 
-      <!-- 2. KUTU: MESLEK SİNERJİSİ -->
-      <div class="bottom-panel">
-        <h3>Meslek Sinerjisi</h3>
-        <div class="panel-prof-list">
-          <div class="panel-prof-item">
-            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering">
-            <div class="panel-prof-info">
-              <strong>Engineering</strong>
-              <p>Nitro Boosts, kemer eklentileri, patlayıcılar ve vazgeçilmez raid utility desteği sağlar.</p>
-            </div>
+      <!-- MASAÜSTÜNDE ALT ALTA, MOBİLDE YAN YANA İKİLİ BLOK -->
+      <div class="bottom-panels-paired">
+
+        <!-- 2. KUTU: MESLEK SİNERJİSİ -->
+        <div class="bottom-panel" id="panel-meslek-sinerjisi">
+          <div class="panel-header-block">
+            <h3>Meslek Sinerjisi</h3>
           </div>
-          <div class="panel-prof-item">
-            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing">
-            <div class="panel-prof-info">
-              <strong>Blacksmithing</strong>
-              <p>Warrior ve Paladin için erken aşamada yüksek nitelikli plate craft zırh ve silah üretir.</p>
+          <div class="panel-prof-list">
+            <div class="panel-prof-item">
+              <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering">
+              <div class="panel-prof-info">
+                <strong>Engineering</strong>
+                <p>Nitro Boosts, kemer eklentileri, patlayıcılar ve vazgeçilmez raid utility desteği sağlar.</p>
+              </div>
             </div>
-          </div>
-          <div class="panel-prof-item">
-            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking">
-            <div class="panel-prof-info">
-              <strong>Leatherworking</strong>
-              <p>Rogue, Hunter, Shaman ve Druid sınıflarına yüksek statlı leather ve mail craft parçaları sağlar.</p>
+            <div class="panel-prof-item">
+              <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing">
+              <div class="panel-prof-info">
+                <strong>Blacksmithing</strong>
+                <p>Warrior ve Paladin için erken aşamada yüksek nitelikli plate craft zırh ve silah üretir.</p>
+              </div>
             </div>
-          </div>
-          <div class="panel-prof-item">
-            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring">
-            <div class="panel-prof-info">
-              <strong>Tailoring</strong>
-              <p>Priest, Mage ve Warlock için ilk fazlarda BiS kabul edilen özel cloth craft ekipmanları verir.</p>
+            <div class="panel-prof-item">
+              <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking">
+              <div class="panel-prof-info">
+                <strong>Leatherworking</strong>
+                <p>Rogue, Hunter, Shaman ve Druid sınıflarına yüksek statlı leather ve mail craft parçaları sağlar.</p>
+              </div>
+            </div>
+            <div class="panel-prof-item">
+              <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring">
+              <div class="panel-prof-info">
+                <strong>Tailoring</strong>
+                <p>Priest, Mage ve Warlock için ilk fazlarda BiS kabul edilen özel cloth craft ekipmanları verir.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- 3. KUTU: HAZIRLIK PRENSİPLERİ -->
-      <div class="bottom-panel">
-        <h3>Hazırlık Prensipleri</h3>
-        <div class="panel-notes-header">Raid disiplini ve kadro standartları:</div>
-        <ul class="panel-checklist">
-          <li>Tüm tercihler doğrudan boss ilerleyişi ve encounter verimliliği için planlanmıştır.</li>
-          <li>Kaynak temini Auction House üzerinden eksiksiz ve sınırsız alınıcak şekilde planlanmıştır.</li>
-          <li>Karaktere kalıcı stat ve utility kazandırmayan toplayıcılık meslekleri(Herbalism/Mining/Skinning) elenmiştir.</li>
-          <li>Hazır temin edilebilen Alchemy ve Enchanting için ana meslek slotu harcanmamıştır.</li>
-          <li>Meslek kotası harcamayan Cooking ve Fishing ikincil meslekleri maksimuma çıkartılabilir.</li>
-        </ul>
+        <!-- 3. KUTU: HAZIRLIK PRENSİPLERİ -->
+        <div class="bottom-panel" id="panel-hazirlik-prensipleri">
+          <div class="panel-header-block">
+            <h3>Hazırlık Prensipleri</h3>
+          </div>
+          <div class="panel-notes-header">Raid kadrosu hedefleri:</div>
+          <ul class="panel-checklist">
+            <li>Tüm tercihler doğrudan boss ilerleyişi ve encounter verimliliği için planlanmıştır.</li>
+            <li>Kaynak temini Auction House üzerinden eksiksiz ve sınırsız alınıcak şekilde planlanmıştır.</li>
+            <li>Karaktere kalıcı stat ve utility kazandırmayan toplayıcılık meslekleri(Herbalism/Mining/Skinning) elenmiştir.</li>
+            <li>Hazır temin edilebilen Alchemy ve Enchanting için ana meslek slotu harcanmamıştır.</li>
+            <li>Meslek kotası harcamayan Cooking ve Fishing ikincil meslekleri maksimuma çıkartılabilir.</li>
+          </ul>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- Created by Siyam Discord İmzası -->
+    <!-- Discord İmzası -->
     <div class="guide-signature-wrap">
       <div class="signature-badge">
         <span>Created by</span>
