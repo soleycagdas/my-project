@@ -1,6 +1,6 @@
 <style>
 /* ==========================================================================
-   TURKS VE ANADOLU - %100 GARANTİLİ ÇALIŞAN WOW PVE REHBERİ
+   TURKS VE ANADOLU - HASTECRAFT FOREVER-ICONS ENTEGRASYONLU PVE REHBERİ
    ========================================================================== */
 .guild-guide-section {
   padding: 80px 20px 90px 20px;
@@ -27,7 +27,7 @@
   z-index: 2;
 }
 
-/* WoW Forever Logo & Başlık Alanı */
+/* WoW Forever Başlık Alanı */
 .guide-header {
   text-align: center;
   margin-bottom: 45px;
@@ -51,9 +51,8 @@
   border-radius: 6px;
   margin-bottom: 14px;
 }
-.wow-forever-badge img {
-  width: 32px;
-  height: 32px;
+.wow-forever-badge svg {
+  flex-shrink: 0;
 }
 .wow-forever-badge span {
   font-size: 1.25rem;
@@ -115,7 +114,7 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.95);
 }
 
-/* Sınıf Renkleri ve Işımaları */
+/* Sınıf Renkleri */
 .class-druid   { border-top: 4px solid #FF7C0A; }
 .class-druid:hover { border-color: #FF7C0A; box-shadow: 0 8px 24px rgba(0,0,0,0.9), 0 0 14px rgba(255, 124, 10, 0.35); }
 .class-druid h3 { color: #FF7C0A; }
@@ -154,7 +153,7 @@
 
 /* Kart İçeriği */
 .card-body {
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -166,7 +165,7 @@
   gap: 14px;
   margin-bottom: 16px;
   border-bottom: 1px solid #36281d;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
 }
 .class-main-icon {
   width: 48px;
@@ -219,7 +218,7 @@
   justify-content: space-between;
   background: rgba(10, 8, 7, 0.75);
   border: 1px solid #2e2218;
-  padding: 7px 12px;
+  padding: 8px 12px;
   border-radius: 4px;
   margin-bottom: 6px;
   font-size: 0.86rem;
@@ -235,19 +234,13 @@
   color: #b5a491;
   font-size: 0.82rem;
 }
-.race-tag-icon {
-  width: 20px;
-  height: 20px;
+.race-mini-icon {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 1px solid #826038;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  font-weight: 800;
-  background: #2b1f16;
-  color: #f7d58b;
   flex-shrink: 0;
+  background-color: #120e0c;
 }
 
 /* Meslek Rozetleri */
@@ -281,6 +274,12 @@
   border-radius: 4px;
   font-size: 0.78rem;
   font-weight: 600;
+}
+.prof-mini-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  flex-shrink: 0;
 }
 
 .prof-engineering {
@@ -387,7 +386,6 @@
     <div class="guide-header">
       <div class="forever-badge-title">
         <div class="wow-forever-badge">
-          <!-- Güvenilir SVG Horde Amblemi -->
           <svg viewBox="0 0 24 24" width="28" height="28" fill="#ba181b">
             <path d="M12 2L9 5v4l3 3 3-3V5l-3-3zm0 13l-4-4H4v3l5 5 3-4zm0 0l4-4h4v3l-5 5-3-4z"/>
           </svg>
@@ -406,8 +404,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <!-- Wikimedia üzerinden açık erişimli resmî sınıf vektörü -->
-              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/WoW_icon_druid.png" alt="Druid" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/druid.png" alt="Druid" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Hibrit · Tank / Şifacı / DPS</span>
                 <h3>Druid</h3>
@@ -419,28 +416,28 @@
               <div class="spec-item">
                 <span class="spec-name">Ayı Tank (Feral Bear)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">T</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/tauren-male.png" alt="Tauren" class="race-mini-icon">
                   <span>Tauren</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Fiziksel DPS (Feral Cat)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">T</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/tauren-male.png" alt="Tauren" class="race-mini-icon">
                   <span>Tauren</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Büyücü DPS (Balance)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">S</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Skyborne" class="race-mini-icon">
                   <span>Skyborne / Troll</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Şifacı (Restoration)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">T</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/tauren-male.png" alt="Tauren" class="race-mini-icon">
                   <span>Tauren / Skyborne</span>
                 </div>
               </div>
@@ -451,8 +448,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-leatherworking">🛡️ Leatherworking</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/leatherworking.png" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
               </div>
             </div>
             
@@ -475,7 +472,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/WoW_icon_warrior.png" alt="Warrior" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/warrior.png" alt="Warrior" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Tank & Yakın Dövüş DPS</span>
                 <h3>Warrior</h3>
@@ -487,14 +484,14 @@
               <div class="spec-item">
                 <span class="spec-name">Ana / Yan Tank (Protection)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">T</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/tauren-male.png" alt="Tauren" class="race-mini-icon">
                   <span>Tauren</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Yakın Dövüş DPS (Fury / Arms)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">O</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/orc-male.png" alt="Orc" class="race-mini-icon">
                   <span>Orc</span>
                 </div>
               </div>
@@ -505,8 +502,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-blacksmithing">🔨 Blacksmithing</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-blacksmithing"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/blacksmithing.png" alt="Blacksmithing" class="prof-mini-icon"> Blacksmithing</span>
               </div>
             </div>
 
@@ -529,7 +526,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/WoW_icon_shaman.png" alt="Shaman" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/shaman.png" alt="Shaman" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Şifacı & Yakın / Uzak DPS</span>
                 <h3>Shaman</h3>
@@ -541,21 +538,21 @@
               <div class="spec-item">
                 <span class="spec-name">Grup Şifacısı (Restoration)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">Tr</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Troll" class="race-mini-icon">
                   <span>Troll</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Yakın Dövüş (Enhancement)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">O</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/orc-male.png" alt="Orc" class="race-mini-icon">
                   <span>Orc</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Menzilli Büyücü (Elemental)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">Tr</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Troll" class="race-mini-icon">
                   <span>Troll</span>
                 </div>
               </div>
@@ -566,8 +563,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-leatherworking">🛡️ Leatherworking</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/leatherworking.png" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
               </div>
             </div>
 
@@ -590,7 +587,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/WoW_icon_paladin.png" alt="Paladin" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/paladin.png" alt="Paladin" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Çok Yönlü Roller</span>
                 <h3>Paladin</h3>
@@ -602,14 +599,14 @@
               <div class="spec-item">
                 <span class="spec-name">Kutsal Hasar (Retribution)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">BE</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/bloodelf-male.png" alt="Blood Elf" class="race-mini-icon">
                   <span>Blood Elf</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Şifa / Kalkan (Holy / Prot)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">BE</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/bloodelf-female.png" alt="Blood Elf" class="race-mini-icon">
                   <span>Blood Elf</span>
                 </div>
               </div>
@@ -620,8 +617,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-blacksmithing">🔨 Blacksmithing</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-blacksmithing"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/blacksmithing.png" alt="Blacksmithing" class="prof-mini-icon"> Blacksmithing</span>
               </div>
             </div>
 
@@ -644,7 +641,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/WoW_icon_hunter.png" alt="Hunter" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/hunter.png" alt="Hunter" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Menzilli Fiziksel DPS</span>
                 <h3>Hunter</h3>
@@ -656,14 +653,14 @@
               <div class="spec-item">
                 <span class="spec-name">Nişancılık (Marksmanship)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">Tr</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Troll" class="race-mini-icon">
                   <span>Troll</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Hayvan Terbiyesi (BM)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">O</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/orc-male.png" alt="Orc" class="race-mini-icon">
                   <span>Orc</span>
                 </div>
               </div>
@@ -674,8 +671,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-leatherworking">🛡️ Leatherworking</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/leatherworking.png" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
               </div>
             </div>
 
@@ -698,7 +695,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/WoW_icon_rogue.png" alt="Rogue" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/rogue.png" alt="Rogue" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Yakın Dövüş Suikastçı</span>
                 <h3>Rogue</h3>
@@ -710,14 +707,14 @@
               <div class="spec-item">
                 <span class="spec-name">Sürekli Hasar (Combat)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">O</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/orc-male.png" alt="Orc" class="race-mini-icon">
                   <span>Orc</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Hızlı Dilimleme (Daggers)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">Tr</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Troll" class="race-mini-icon">
                   <span>Troll</span>
                 </div>
               </div>
@@ -728,8 +725,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-leatherworking">🛡️ Leatherworking</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-leatherworking"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/leatherworking.png" alt="Leatherworking" class="prof-mini-icon"> Leatherworking</span>
               </div>
             </div>
 
@@ -752,7 +749,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/WoW_icon_mage.png" alt="Mage" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/mage.png" alt="Mage" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Menzilli Büyücü DPS</span>
                 <h3>Mage</h3>
@@ -764,14 +761,14 @@
               <div class="spec-item">
                 <span class="spec-name">Raid Ana Hasar (Fire / Arcane)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">Tr</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Troll" class="race-mini-icon">
                   <span>Troll</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Kontrol & Güvenlik (Frost)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">UD</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/undead-male.png" alt="Undead" class="race-mini-icon">
                   <span>Undead</span>
                 </div>
               </div>
@@ -782,8 +779,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-tailoring">🧵 Tailoring</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-tailoring"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/tailoring.png" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
               </div>
             </div>
 
@@ -806,7 +803,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/WoW_icon_warlock.png" alt="Warlock" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/warlock.png" alt="Warlock" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Menzilli Kara Büyücü</span>
                 <h3>Warlock</h3>
@@ -818,14 +815,14 @@
               <div class="spec-item">
                 <span class="spec-name">Ateş & Gölge Patlaması (Destro)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">O</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/orc-male.png" alt="Orc" class="race-mini-icon">
                   <span>Orc</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Zaman Yayılımlı Hasar (Affli)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">UD</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/undead-male.png" alt="Undead" class="race-mini-icon">
                   <span>Undead</span>
                 </div>
               </div>
@@ -836,8 +833,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-tailoring">🧵 Tailoring</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-tailoring"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/tailoring.png" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
               </div>
             </div>
 
@@ -860,7 +857,7 @@
         <div class="card-body">
           <div>
             <div class="card-header">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/WoW_icon_priest.png" alt="Priest" class="class-main-icon">
+              <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/classes/priest.png" alt="Priest" class="class-main-icon">
               <div class="class-title-wrap">
                 <span class="class-role-badge">Şifacı & Gölge Rahibi</span>
                 <h3>Priest</h3>
@@ -872,14 +869,14 @@
               <div class="spec-item">
                 <span class="spec-name">Raid Şifacısı (Holy / Disc)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">Tr</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/troll-male.png" alt="Troll" class="race-mini-icon">
                   <span>Troll</span>
                 </div>
               </div>
               <div class="spec-item">
                 <span class="spec-name">Gölge Büyüsü (Shadow)</span>
                 <div class="race-pick">
-                  <span class="race-tag-icon">UD</span>
+                  <img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/races/undead-male.png" alt="Undead" class="race-mini-icon">
                   <span>Undead</span>
                 </div>
               </div>
@@ -890,8 +887,8 @@
             <div class="professions-line">
               <strong>Önerilen Meslekler:</strong>
               <div class="prof-badges-wrap">
-                <span class="prof-badge prof-engineering">⚙️ Engineering</span>
-                <span class="prof-badge prof-tailoring">🧵 Tailoring</span>
+                <span class="prof-badge prof-engineering"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/engineering.png" alt="Engineering" class="prof-mini-icon"> Engineering</span>
+                <span class="prof-badge prof-tailoring"><img src="https://raw.githubusercontent.com/hastecraft/forever-icons/main/professions/tailoring.png" alt="Tailoring" class="prof-mini-icon"> Tailoring</span>
               </div>
             </div>
 
