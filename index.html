@@ -1,6 +1,8 @@
+<meta name="color-scheme" content="dark">
+
 <style>
 /* ==========================================================================
-   SAYFA GENELİ SIFIRLAMA
+   SAYFA GENELİ SIFIRLAMA & NOIR / KARANLIK MOD KORUMASI
    ========================================================================== */
 html, body {
   margin: 0 !important;
@@ -11,6 +13,7 @@ html, body {
   overflow-x: hidden !important;
   border: none !important;
   outline: none !important;
+  color-scheme: dark !important;
 }
 
 /* ==========================================================================
@@ -21,18 +24,50 @@ html, body {
   margin: 0;
   padding: 50px 20px 60px 20px;
   background-color: #050404;
-  background-image: 
-    linear-gradient(90deg, rgba(5, 4, 4, 0.25) 0%, rgba(10, 8, 7, 0.75) 35%, rgba(5, 4, 4, 0.95) 100%),
-    radial-gradient(circle at 50% 10%, rgba(20, 15, 12, 0.45) 0%, rgba(5, 4, 4, 0.9) 80%),
-    url('assets/img/wow-forever-bg.webp');
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
+  position: relative;
+  z-index: 1;
   color: #dfcfb8;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   box-sizing: border-box;
 }
+
+/* iOS Safari & Noir Eklentisi Korumalı Sabit Arka Plan Katmanı */
+.guild-guide-section::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background-image: url('assets/img/wow-forever-bg.webp');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  isolation: isolate;
+}
+
+/* Karartma ve Degrade Katmanı */
+.guild-guide-section::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: 
+    linear-gradient(90deg, rgba(5, 4, 4, 0.45) 0%, rgba(10, 8, 7, 0.82) 40%, rgba(5, 4, 4, 0.96) 100%),
+    radial-gradient(circle at 50% 10%, rgba(20, 15, 12, 0.45) 0%, rgba(5, 4, 4, 0.92) 80%);
+  pointer-events: none;
+}
+
 .guild-guide-section *, 
 .guild-guide-section *::before, 
 .guild-guide-section *::after {
@@ -41,6 +76,8 @@ html, body {
 .guide-container {
   max-width: 1280px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* Üst Başlık Şeridi */
@@ -93,6 +130,7 @@ html, body {
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .class-box:hover {
@@ -347,7 +385,7 @@ html, body {
   flex-direction: column;
 }
 
-/* Panel Başlık Alanı */
+/* Panel Başlık Alanı - Üstte Tam Yatay */
 .bottom-panel .panel-header-block {
   width: 100%;
   margin-bottom: 14px;
@@ -362,6 +400,14 @@ html, body {
   text-transform: uppercase;
   margin: 0;
   display: block;
+}
+
+/* Sınıf Bazlı Analiz İç Alanı */
+#panel-sinif-analiz {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
 }
 
 /* Panel 1: Sınıf Bazlı Analiz Listesi */
@@ -1246,7 +1292,7 @@ html, body {
     <!-- MASAÜSTÜNDE ALT ALTA 3 SIRA DURAN PANELLER -->
     <div class="bottom-panels-wrapper">
 
-      <!-- 1. KUTU: SINIF BAZLI ANALİZ (Masaüstünde tam genişlikte yatay panel, mobilde Druid'in yanına fırlar) -->
+      <!-- 1. KUTU: SINIF BAZLI ANALİZ (Masaüstünde ilk sırada, mobilde Druid'in yanına fırlar) -->
       <div class="bottom-panel" id="panel-sinif-analiz">
         <div class="panel-header-block">
           <h3>Sınıf Bazlı Analiz</h3>
