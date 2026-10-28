@@ -118,7 +118,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 }
 .class-box {
   border-radius: 8px;
@@ -365,6 +365,142 @@ html, body {
 }
 
 /* ==========================================================================
+   YENİ: HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ
+   ========================================================================== */
+.races-summary-section {
+  margin-bottom: 24px;
+  background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
+  border: 1px solid #3d2f24;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+.races-summary-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.races-summary-header h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f7d58b;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.races-summary-header span {
+  font-size: 0.75rem;
+  color: #a89885;
+}
+
+.races-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.race-card {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.race-card:hover {
+  transform: translateY(-2px);
+  border-color: #826038;
+}
+
+.race-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 6px;
+}
+
+.race-card-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid #826038;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.race-card-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #dfcfb8;
+  line-height: 1.1;
+}
+
+.race-traits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.trait-item {
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: #a89885;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 5px 6px;
+  border-radius: 4px;
+  border-left: 2px solid #57412f;
+}
+
+.trait-item strong {
+  color: #dfcfb8;
+  display: block;
+  font-size: 0.70rem;
+  margin-bottom: 2px;
+}
+
+.trait-tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.tag-active {
+  background: rgba(198, 155, 109, 0.2);
+  color: #f7d58b;
+  border: 1px solid rgba(198, 155, 109, 0.4);
+}
+
+.tag-passive {
+  background: rgba(63, 199, 235, 0.15);
+  color: #3FC7EB;
+  border: 1px solid rgba(63, 199, 235, 0.3);
+}
+
+.trait-patch {
+  color: #e5b067;
+  font-size: 0.64rem;
+  font-style: italic;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
    ALT PANELLER (MASAÜSTÜNDE HEPSİ ALT ALTA VE TAM GENİŞLİKTE)
    ========================================================================== */
 .bottom-panels-wrapper {
@@ -385,7 +521,6 @@ html, body {
   flex-direction: column;
 }
 
-/* Panel Başlık Alanı - Üstte Tam Yatay */
 .bottom-panel .panel-header-block {
   width: 100%;
   margin-bottom: 14px;
@@ -402,7 +537,6 @@ html, body {
   display: block;
 }
 
-/* Sınıf Bazlı Analiz İç Alanı */
 #panel-sinif-analiz {
   display: flex !important;
   flex-direction: column !important;
@@ -410,7 +544,6 @@ html, body {
   width: 100% !important;
 }
 
-/* Panel 1: Sınıf Bazlı Analiz Listesi */
 .panel-race-list {
   display: flex;
   flex-direction: column;
@@ -444,7 +577,6 @@ html, body {
   color: #9c8c7d;
 }
 
-/* Panel 2: Meslek Sinerjisi */
 .panel-prof-list {
   display: flex;
   flex-direction: column;
@@ -477,7 +609,6 @@ html, body {
   color: #9c8c7d;
 }
 
-/* Panel 3: Hazırlık Prensipleri */
 .panel-notes-header {
   font-size: 0.80rem;
   color: #c4b5a5;
@@ -624,16 +755,28 @@ html, body {
     font-size: 1.05rem;
   }
 
-  .bottom-panels-wrapper {
+  /* Irk Detayları Paneli: Sınıf seçimlerinden sonra tam genişlikte yer alır */
+  .races-summary-section {
     grid-column: 1 / -1;
     order: 12;
+    margin-top: 10px;
+    margin-bottom: 16px;
+  }
+
+  .races-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bottom-panels-wrapper {
+    grid-column: 1 / -1;
+    order: 13;
     display: contents;
   }
 
   /* Meslek Sinerjisi ve Hazırlık Prensipleri mobilde yan yana 2 kutu olur */
   .bottom-panels-paired {
     grid-column: 1 / -1;
-    order: 13;
+    order: 14;
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 16px;
@@ -641,7 +784,7 @@ html, body {
 
   .guide-signature-wrap {
     grid-column: 1 / -1;
-    order: 14;
+    order: 15;
   }
 }
 
@@ -665,6 +808,10 @@ html, body {
   .cb-body { grid-template-columns: 95px 1fr; gap: 8px; }
   .race-avatar-box { min-width: 68px; padding: 3px 4px; }
   .race-avatar-box img.race-img { width: 28px; height: 28px; }
+
+  .races-grid {
+    grid-template-columns: 1fr;
+  }
   
   .bottom-panels-paired {
     gap: 10px !important;
@@ -692,7 +839,7 @@ html, body {
       </div>
     </div>
 
-    <!-- 9 Sınıf Kartı -->
+    <!-- 1. BÖLÜM: 9 SINIF KARTI -->
     <div class="guide-class-grid">
 
       <!-- 1. WARRIOR -->
@@ -818,7 +965,7 @@ html, body {
               </div>
 
               <div class="cb-desc-text">
-                Horde saflarında Paladin oynayabilen tek ırk Undead'dir. Engineering alan tehdidi ve utility verirken, Blacksmithing plate craft parçalarıyla sağlam zırh ve silah temin eder.
+                Horde saflarında Paladin oynayabilen tek ırk Undead'dir. Touch of the Grave proc sıklığıyla hasar ve hayatta kalma gücü sunar; Engineering ve Blacksmithing vazgeçilmezdir.
               </div>
             </div>
           </div>
@@ -948,7 +1095,7 @@ html, body {
               </div>
 
               <div class="cb-desc-text">
-                Beast Mastery için Orc evcil hayvan hasarını katlar; Marksmanship ve Survival için Skyborne haste artırır. Engineering mühimmat sağlar, Leatherworking mail craft parçaları üretir.
+                Beast Mastery için Orc Blood Fury ve %5 pet hasarıyla rakipsizdir; Marksmanship ve Survival için Skyborne haste artırır. Engineering mühimmat sağlar.
               </div>
             </div>
           </div>
@@ -1010,7 +1157,7 @@ html, body {
               </div>
 
               <div class="cb-desc-text">
-                Priest rolleri için Undead Will of the Forsaken ve Devouring Plague ile en güvenli seçenektir. Tailoring cloth craft setleri sunarken, Engineering kısıtlı Priest mobilitesini çözer.
+                Priest rolleri için Undead Will of the Forsaken ve Touch of the Grave ile en sağlam seçenektir. Tailoring ve Engineering standarttır.
               </div>
             </div>
           </div>
@@ -1115,8 +1262,8 @@ html, body {
             <div class="cb-right-col">
               <div class="race-avatars-row">
                 <div class="race-avatar-box">
-                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" alt="Orc" class="race-img">
-                  <span class="race-avatar-name">Orc</span>
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead" class="race-img">
+                  <span class="race-avatar-name">Undead</span>
                   <div class="race-avatar-specs-list">
                     <span class="race-avatar-sub-item">
                       <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_holy_magicalsentry.jpg" alt="Arcane" class="sub-spec-ico">
@@ -1126,12 +1273,6 @@ html, body {
                       <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_fire_firebolt02.jpg" alt="Fire" class="sub-spec-ico">
                       Fire
                     </span>
-                  </div>
-                </div>
-                <div class="race-avatar-box">
-                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" alt="Troll" class="race-img">
-                  <span class="race-avatar-name">Troll</span>
-                  <div class="race-avatar-specs-list">
                     <span class="race-avatar-sub-item">
                       <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_frost_frostbolt02.jpg" alt="Frost" class="sub-spec-ico">
                       Frost
@@ -1146,7 +1287,7 @@ html, body {
               </div>
 
               <div class="cb-desc-text">
-                Arcane ve Fire pencerelerinde Orc Blood Fury büyü hasarını katlar; Frost için Troll cast süresini kısaltır. Tailoring kumaş craft parçalarıyla erken BiS zırh avantajı sağlar.
+                Tüm Mage disiplinlerinde Undead Touch of the Grave proc desteği ve WotF ile en istikrarlı seçimdir. Tailoring cloth craft setleri BiS statları garantiler.
               </div>
             </div>
           </div>
@@ -1208,7 +1349,7 @@ html, body {
               </div>
 
               <div class="cb-desc-text">
-                Tüm Warlock disiplinlerinde Orc demon ve büyü hasarı çarpanlarıyla tek ve tartışmasız seçenektir. Tailoring kumaş craft parçalarıyla Spell Power temelini kurar.
+                Orc Blood Fury ve %5 pet bonusu (Command) ile Warlock için tartışmasız güç katar. Tailoring kumaş craft parçalarıyla Spell Power temelini kurar.
               </div>
             </div>
           </div>
@@ -1249,12 +1390,16 @@ html, body {
                   <span class="race-avatar-name">Skyborne</span>
                   <div class="race-avatar-specs-list">
                     <span class="race-avatar-sub-item">
-                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg" alt="Feral DPS" class="sub-spec-ico">
-                      Feral DPS
+                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg" alt="Cat" class="sub-spec-ico">
+                      Cat
                     </span>
                     <span class="race-avatar-sub-item">
-                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg" alt="Balance" class="sub-spec-ico">
+                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_starfall.jpg" alt="Balance" class="sub-spec-ico">
                       Balance
+                    </span>
+                    <span class="race-avatar-sub-item">
+                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg" alt="Restoration" class="sub-spec-ico">
+                      Restoration
                     </span>
                   </div>
                 </div>
@@ -1263,12 +1408,8 @@ html, body {
                   <span class="race-avatar-name">Tauren</span>
                   <div class="race-avatar-specs-list">
                     <span class="race-avatar-sub-item">
-                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="Feral Tank" class="sub-spec-ico">
-                      Feral Tank
-                    </span>
-                    <span class="race-avatar-sub-item">
-                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg" alt="Restoration" class="sub-spec-ico">
-                      Restoration
+                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="Bear" class="sub-spec-ico">
+                      Bear
                     </span>
                   </div>
                 </div>
@@ -1280,7 +1421,7 @@ html, body {
               </div>
 
               <div class="cb-desc-text">
-                Feral Tank ve Restoration için Tauren geniş can havuzu sunar; Feral DPS ve Balance disiplinlerinde Skyborne haste artırır. Leatherworking leather craft zırhlarıyla Druid formlarını destekler.
+                Bear formunda Tauren can havuzu (%5 Endurance) kritiktir; Cat, Balance ve Restoration rollerinde Skyborne haste artırır. Leatherworking ve Engineering en ideal ikilidir.
               </div>
             </div>
           </div>
@@ -1289,10 +1430,159 @@ html, body {
 
     </div>
 
-    <!-- MASAÜSTÜNDE ALT ALTA 3 SIRA DURAN PANELLER -->
+    <!-- 2. BÖLÜM: YENİ EKLENEN HORDE IRK DETAYLARI PANELİ (SINIFLARDAN HEMEN SONRA) -->
+    <div class="races-summary-section">
+      <div class="races-summary-header">
+        <h3>Horde Irk Özellikleri ve Dengelemeleri</h3>
+        <span>Güncel Yama Notları</span>
+      </div>
+
+      <div class="races-grid">
+
+        <!-- 1. ORC -->
+        <div class="race-card">
+          <div class="race-card-head">
+            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" alt="Orc" class="race-card-icon">
+            <span class="race-card-title">Orc</span>
+          </div>
+          <div class="race-traits-list">
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Blood Fury</strong>
+              15 sn boyunca AP ve SP'yi %10 artırır. (3 dk CD).
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Shatter Curse</strong>
+              Lanetleri kaldırır ve 8 sn boyunca alınan büyü hasarını azaltır.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Command</strong>
+              Hunter ve Warlock pet hasarını %5 artırır.
+              <span class="trait-patch">%1 crit yerine klasik hali getirildi; petli sınıflarda BiS.</span>
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Hardiness</strong>
+              Stun sürelerini %20 kısaltır.
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. UNDEAD -->
+        <div class="race-card">
+          <div class="race-card-head">
+            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead" class="race-card-icon">
+            <span class="race-card-title">Undead</span>
+          </div>
+          <div class="race-traits-list">
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>WotF</strong>
+              Büyü, fear ve sleep etkilerini anında temizler.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Cannibalize</strong>
+              Ceset yiyerek toplam can ve mananın %35'ini yeniler.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Touch of the Grave</strong>
+              Vuruş ve büyülere Shadow hasarı ve can çalma ekler.
+              <span class="trait-patch">İstemsiz proc engellemek için 25 sn ICD eklendi.</span>
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Underwater Breathing</strong>
+              Sualtı nefes alma süresini %300 uzatır.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. TAUREN -->
+        <div class="race-card">
+          <div class="race-card-head">
+            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" alt="Tauren" class="race-card-icon">
+            <span class="race-card-title">Tauren</span>
+          </div>
+          <div class="race-traits-list">
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>War Stomp</strong>
+              Yakındaki 5 hedefi 2 sn sersemletir.
+              <span class="trait-patch">Bekleme süresi 90 saniyeye düşürüldü.</span>
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Cultivation</strong>
+              Meslek sınırı olmadan haritadaki bonus bitkileri (herbs) toplatır.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Plainsrunning</strong>
+              Hareket halinde kaldıkça koşma hızını %60'a kadar artırır.
+              <span class="trait-patch">Hız sınırı %30'dan %60'a çıkarıldı.</span>
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Endurance</strong>
+              Toplam can değerini %5 artırır.
+              <span class="trait-patch">%2 kritik hasar bonusu kaldırıldı.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. TROLL -->
+        <div class="race-card">
+          <div class="race-card-head">
+            <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" alt="Troll" class="race-card-icon">
+            <span class="race-card-title">Troll</span>
+          </div>
+          <div class="race-traits-list">
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Berserking</strong>
+              Saldırı ve büyü hızını (Haste) %10 artırır.
+              <span class="trait-patch">Etki süresi 10 sn'den 15 sn'ye çıkarıldı.</span>
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Rapid Regeneration</strong>
+              Savaş dışındayken azami sağlığın %50'sini hızla doldurur.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Regeneration</strong>
+              HP yenilenmesi %20 artar; %20'si savaşta da sürer.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Beast Slaying</strong>
+              Canavarlara (Beast) verilen hasarı %5 artırır.
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. SKYBORNE -->
+        <div class="race-card">
+          <div class="race-card-head">
+            <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-card-icon">
+            <span class="race-card-title">Skyborne</span>
+          </div>
+          <div class="race-traits-list">
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Levitation</strong>
+              Yüksekten hasar almadan aşağı süzülme avantajı sunar.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-active">Aktif</span>Skysight</strong>
+              Açık dünya hızını %15 artırır. Şarjla (Charged) ölümle silinmeyen 1 sa %30 hız verir.
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Wind Blessed</strong>
+              Melee, menzilli ve büyü hızını (Haste) %2 artırır.
+              <span class="trait-patch">%3'ten %2'ye düşürüldü.</span>
+            </div>
+            <div class="trait-item">
+              <strong><span class="trait-tag tag-passive">Pasif</span>Elemental Insight</strong>
+              Elementallere karşı %5 hasar artışı verir.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. BÖLÜM: MASAÜSTÜNDE ALT ALTA DURAN PANELLER (SINIF BAZLI ANALİZ VE DİĞERLERİ) -->
     <div class="bottom-panels-wrapper">
 
-      <!-- 1. KUTU: SINIF BAZLI ANALİZ (Masaüstünde ilk sırada, mobilde Druid'in yanına fırlar) -->
+      <!-- 1. KUTU: SINIF BAZLI ANALİZ -->
       <div class="bottom-panel" id="panel-sinif-analiz">
         <div class="panel-header-block">
           <h3>Sınıf Bazlı Analiz</h3>
@@ -1302,35 +1592,35 @@ html, body {
             <img src="assets/img/race_skyborne_male.webp" alt="Skyborne">
             <div class="panel-race-info">
               <strong>Skyborne</strong>
-              <p>Melee ve hibrit sınıflarda haste artırır, en tepe hasar tavanını ve parse verimini sağlar.</p>
+              <p>Melee ve hibrit sınıflarda %2 Haste pasifiyle en tepe hasar tavanını ve parse verimini sağlar.</p>
             </div>
           </div>
           <div class="panel-race-item">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" alt="Orc">
             <div class="panel-race-info">
               <strong>Orc</strong>
-              <p>Doğal burst artışı ve pet bonusuyla Hunter ve Mage için en istikrarlı güç çarpanıdır.</p>
+              <p>Blood Fury ve geri getirilen %5 Command pet bonusuyla Hunter ve Warlock için tartışmasız en tepe güç çarpanıdır.</p>
             </div>
           </div>
           <div class="panel-race-item">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" alt="Troll">
             <div class="panel-race-info">
               <strong>Troll</strong>
-              <p>Cast hızlanmasıyla Shaman şifasında ve Mage büyü döngüsünde belirgin tempo kazandırır.</p>
+              <p>15 saniyeye çıkarılan Berserking cast hızı artışıyla Shaman şifasında belirgin tempo kazandırır.</p>
             </div>
           </div>
           <div class="panel-race-item">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" alt="Tauren">
             <div class="panel-race-info">
               <strong>Tauren</strong>
-              <p>Geniş can tamponu ve alan sersemletmesiyle Warrior ve Druid tank pozisyonunun güvencesidir.</p>
+              <p>%5 Endurance can havuzu ve 90 saniyeye inen War Stomp sersemletmesiyle Warrior ve Druid tank rollerinin kalesidir.</p>
             </div>
           </div>
           <div class="panel-race-item">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead">
             <div class="panel-race-info">
               <strong>Undead</strong>
-              <p>Kritik mekanik bozma avantajı sunar ve Horde tarafında Paladin oynayabilen tek ırktır.</p>
+              <p>Touch of the Grave ve WotF avantajıyla Paladin, Priest ve Mage sınıflarına düzenli Shadow hasarı ve savunma sunar.</p>
             </div>
           </div>
         </div>
