@@ -217,9 +217,7 @@
   .cb-rogue .cb-title { color: #FFF468; text-shadow: 0 0 10px rgba(255, 244, 104, 0.4); }
 
   .cb-hunter {
-    background: radial-gradient(circle at top left, rgba(170, 211, 114, 0.22) 0%, rgba(170, 211, 114, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-                linear-gradient(180deg, rgba(20, 26, 17, 0.95) 0%, rgba(9, 13, 8, 0.98) 100%);
-    border: 1px solid rgba(170, 211, 114, 0.45);
+    background: radial-gradient(circle at top left, rgba(170, 211, 114, 0.22) 0%, rgba(170, 211, 114, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%);
   }
   .cb-hunter .cb-title { color: #AAD372; text-shadow: 0 0 10px rgba(170, 211, 114, 0.4); }
 
@@ -422,7 +420,7 @@
   }
 
   /* ==========================================================================
-     HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ (İÇ İÇE GEÇME KESİN ÇÖZÜLDÜ)
+     HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ
      ========================================================================== */
   .races-summary-section {
     margin-bottom: 24px;
@@ -847,9 +845,9 @@
   }
 
   /* ==========================================================================
-     YALNIZCA MOBİL & TABLET UYARLAMASI (<= 1100px)
+     TABLET DÜZENİ (769px - 1100px: 2 SÜTUN)
      ========================================================================== */
-  @media (max-width: 1100px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     .guide-class-grid { 
       grid-template-columns: repeat(2, 1fr); 
       display: contents;
@@ -861,15 +859,8 @@
       gap: 16px;
     }
 
-    .guide-nav-bar {
-      grid-column: 1 / -1;
-      order: 1;
-    }
-
-    .guide-top-bar {
-      grid-column: 1 / -1;
-      order: 2;
-    }
+    .guide-nav-bar { grid-column: 1 / -1; order: 1; }
+    .guide-top-bar { grid-column: 1 / -1; order: 2; }
 
     .cb-warrior { order: 3; }
     .cb-paladin { order: 4; }
@@ -888,15 +879,6 @@
       margin: 0 !important;
       padding: 14px 16px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
-    }
-
-    #panel-sinif-analiz .panel-header-block {
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-    }
-
-    #panel-sinif-analiz h3 {
-      font-size: 1.05rem;
     }
 
     .races-summary-section {
@@ -930,47 +912,107 @@
     }
   }
 
+  /* ==========================================================================
+     TELEFON DÜZENİ (<= 768px: KESİNLİKLE TEK SÜTUN / TEKER TEKER)
+     ========================================================================== */
   @media (max-width: 768px) {
     .guild-guide-section {
       padding: 20px 12px 50px 12px;
     }
+
     .guide-container {
-      gap: 10px;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
     }
+
     .guide-nav-bar {
       gap: 4px;
-      padding: 5px 8px;
+      padding: 6px 8px;
+      position: sticky;
+      top: 10px;
+      width: 100%;
     }
     .nav-link {
       font-size: 0.68rem;
-      padding: 4px 8px;
+      padding: 4px 7px;
     }
+
     .guide-top-bar { 
       flex-direction: column; 
       align-items: center; 
       text-align: center;
-      gap: 15px; 
+      gap: 12px; 
+      margin-bottom: 15px;
     }
-    .top-bar-left h2 { font-size: 1.7rem; }
+    .top-bar-left h2 { font-size: 1.65rem; }
     .top-bar-right { text-align: center; }
-    .top-bar-logo { max-width: 180px; }
+    .top-bar-logo { max-width: 170px; }
 
-    .cb-body { grid-template-columns: 95px 1fr; gap: 8px; }
-    .race-avatar-box { min-width: 68px; padding: 3px 4px; }
-    .race-avatar-box img.race-img { width: 28px; height: 28px; }
-
-    .races-grid {
-      grid-template-columns: 1fr;
+    /* SINIF KARTLARI TEKER TEKER SIRALANIR */
+    .guide-class-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      width: 100% !important;
     }
-    
-    .bottom-panels-paired {
+
+    .class-box {
+      width: 100% !important;
+      padding: 14px !important;
+    }
+
+    .cb-body {
+      grid-template-columns: 110px 1fr !important;
+      gap: 12px !important;
+    }
+
+    .race-avatar-box {
+      min-width: 75px !important;
+      padding: 4px 6px !important;
+    }
+    .race-avatar-box img.race-img {
+      width: 32px !important;
+      height: 32px !important;
+    }
+
+    .cb-desc-text {
+      font-size: 0.72rem !important;
+      line-height: 1.4 !important;
+    }
+
+    /* IRKLAR PANELİ MOBİL */
+    .races-summary-section {
+      padding: 14px !important;
+      margin-bottom: 14px !important;
+    }
+    .races-grid {
+      grid-template-columns: 1fr !important;
       gap: 10px !important;
     }
-    .bottom-panel { padding: 12px; }
-    .bottom-panel h3 { font-size: 0.90rem; margin-bottom: 8px; }
-    .panel-race-info strong, .panel-prof-info strong { font-size: 0.74rem; }
-    .panel-race-info p, .panel-prof-info p { font-size: 0.67rem; }
-    .panel-checklist li { font-size: 0.72rem; padding-left: 20px; }
+
+    /* ALT PANELLER MOBİL */
+    .bottom-panels-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+    }
+    .bottom-panels-paired {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+    }
+    .bottom-panel {
+      padding: 14px !important;
+      width: 100% !important;
+    }
+    .bottom-panel h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .panel-race-info strong, .panel-prof-info strong { font-size: 0.78rem; }
+    .panel-race-info p, .panel-prof-info p { font-size: 0.70rem; }
+    .panel-checklist li { font-size: 0.74rem; padding-left: 22px; }
     
     .scroll-top-btn {
       bottom: 18px !important;
@@ -1006,7 +1048,7 @@
       </div>
     </div>
 
-    <!-- 1. BÖLÜM: 9 SINIF KARTI -->
+    <!-- 1. BÖLÜM: 9 SINIF KARTI (TELEFONDA TEKER TEKER SIRALANIR) -->
     <div id="siniflar" class="guide-class-grid">
 
       <!-- 1. WARRIOR -->
@@ -1723,7 +1765,7 @@
                 <span class="trait-timer">2 sn Stun / 90 sn CD</span>
               </div>
               <p class="trait-desc">Yakındaki 5 düşmanı 2 saniye boyunca sersemletir.</p>
-              <span class="trait-patch">Bekleme süresi 90 saniyeye düşürüldü.</span>
+              <span class="trait-patch">Bekleme süresi son dengelemeyle 90 saniyeye düşürüldü.</span>
             </div>
 
             <div class="trait-item">
