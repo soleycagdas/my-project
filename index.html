@@ -1,849 +1,991 @@
-<meta name="color-scheme" content="dark">
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Turks ve Anadolu | WoW Forever PvE Rehberi</title>
 
-<style>
-/* ==========================================================================
-   SAYFA GENELİ SIFIRLAMA & NOIR / KARANLIK MOD KORUMASI
-   ========================================================================== */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: #050404 !important;
-  width: 100% !important;
-  min-height: 100vh !important;
-  overflow-x: hidden !important;
-  border: none !important;
-  outline: none !important;
-  color-scheme: dark !important;
-}
+  <!-- Sekme İkonu (Favicon) -->
+  <link rel="icon" type="image/webp" href="assets/img/wow-forever-logo.webp">
+  <link rel="apple-touch-icon" href="assets/img/wow-forever-logo.webp">
 
-/* ==========================================================================
-   TURKS VE ANADOLU - WOW FOREVER PVE REHBERİ
-   ========================================================================== */
-.guild-guide-section {
-  width: 100%;
-  margin: 0;
-  padding: 50px 20px 60px 20px;
-  background-color: #050404;
-  position: relative;
-  z-index: 1;
-  color: #dfcfb8;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  box-sizing: border-box;
-}
-
-/* iOS Safari & Noir Eklentisi Korumalı Sabit Arka Plan Katmanı */
-.guild-guide-section::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  background-image: url('assets/img/wow-forever-bg.webp');
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  pointer-events: none;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  filter: none !important;
-  -webkit-filter: none !important;
-  mix-blend-mode: normal !important;
-  isolation: isolate;
-}
-
-/* Karartma ve Degrade Katmanı */
-.guild-guide-section::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: 
-    linear-gradient(90deg, rgba(5, 4, 4, 0.45) 0%, rgba(10, 8, 7, 0.82) 40%, rgba(5, 4, 4, 0.96) 100%),
-    radial-gradient(circle at 50% 10%, rgba(20, 15, 12, 0.45) 0%, rgba(5, 4, 4, 0.92) 80%);
-  pointer-events: none;
-}
-
-.guild-guide-section *, 
-.guild-guide-section *::before, 
-.guild-guide-section *::after {
-  box-sizing: inherit;
-}
-.guide-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-/* Üst Başlık Şeridi */
-.guide-top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 35px;
-}
-.top-bar-left h2 {
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: #f7d58b;
-  margin: 0 0 6px 0;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-}
-.top-bar-left p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #a89885;
-}
-.top-bar-right {
-  text-align: right;
-  flex-shrink: 0;
-}
-.top-bar-logo {
-  max-width: 250px;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(0, 162, 232, 0.4));
-}
-
-/* 9 Sınıf Kart Grid (Masaüstü: 3 Sütun) */
-.guide-class-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 30px;
-}
-.class-box {
-  border-radius: 8px;
-  padding: 14px 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.class-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
-}
-
-/* Sınıf Renk Degradeleri */
-.cb-warrior {
-  background: radial-gradient(circle at top left, rgba(198, 155, 109, 0.22) 0%, rgba(198, 155, 109, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(28, 22, 18, 0.95) 0%, rgba(13, 10, 9, 0.98) 100%);
-  border: 1px solid rgba(198, 155, 109, 0.45);
-}
-.cb-warrior .cb-title { color: #C69B6D; text-shadow: 0 0 10px rgba(198, 155, 109, 0.4); }
-
-.cb-paladin {
-  background: radial-gradient(circle at top left, rgba(244, 140, 186, 0.22) 0%, rgba(244, 140, 186, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(28, 18, 24, 0.95) 0%, rgba(13, 9, 12, 0.98) 100%);
-  border: 1px solid rgba(244, 140, 186, 0.45);
-}
-.cb-paladin .cb-title { color: #F48CBA; text-shadow: 0 0 10px rgba(244, 140, 186, 0.4); }
-
-.cb-rogue {
-  background: radial-gradient(circle at top left, rgba(255, 244, 104, 0.20) 0%, rgba(255, 244, 104, 0.04) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(26, 25, 16, 0.95) 0%, rgba(12, 12, 8, 0.98) 100%);
-  border: 1px solid rgba(255, 244, 104, 0.45);
-}
-.cb-rogue .cb-title { color: #FFF468; text-shadow: 0 0 10px rgba(255, 244, 104, 0.4); }
-
-.cb-hunter {
-  background: radial-gradient(circle at top left, rgba(170, 211, 114, 0.22) 0%, rgba(170, 211, 114, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(20, 26, 17, 0.95) 0%, rgba(9, 13, 8, 0.98) 100%);
-  border: 1px solid rgba(170, 211, 114, 0.45);
-}
-.cb-hunter .cb-title { color: #AAD372; text-shadow: 0 0 10px rgba(170, 211, 114, 0.4); }
-
-.cb-priest {
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(24, 24, 26, 0.95) 0%, rgba(11, 11, 12, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-}
-.cb-priest .cb-title { color: #FFFFFF; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-
-.cb-shaman {
-  background: radial-gradient(circle at top left, rgba(0, 112, 221, 0.25) 0%, rgba(0, 112, 221, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(14, 21, 28, 0.95) 0%, rgba(7, 10, 14, 0.98) 100%);
-  border: 1px solid rgba(0, 112, 221, 0.5);
-}
-.cb-shaman .cb-title { color: #0070DD; text-shadow: 0 0 10px rgba(0, 112, 221, 0.4); }
-
-.cb-mage {
-  background: radial-gradient(circle at top left, rgba(63, 199, 235, 0.22) 0%, rgba(63, 199, 235, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(16, 24, 28, 0.95) 0%, rgba(8, 12, 14, 0.98) 100%);
-  border: 1px solid rgba(63, 199, 235, 0.45);
-}
-.cb-mage .cb-title { color: #3FC7EB; text-shadow: 0 0 10px rgba(63, 199, 235, 0.4); }
-
-.cb-warlock {
-  background: radial-gradient(circle at top left, rgba(135, 136, 238, 0.22) 0%, rgba(135, 136, 238, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(21, 18, 28, 0.95) 0%, rgba(10, 9, 14, 0.98) 100%);
-  border: 1px solid rgba(135, 136, 238, 0.45);
-}
-.cb-warlock .cb-title { color: #8788EE; text-shadow: 0 0 10px rgba(135, 136, 238, 0.4); }
-
-.cb-druid {
-  background: radial-gradient(circle at top left, rgba(255, 124, 10, 0.22) 0%, rgba(255, 124, 10, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
-              linear-gradient(180deg, rgba(28, 20, 15, 0.95) 0%, rgba(13, 9, 7, 0.98) 100%);
-  border: 1px solid rgba(255, 124, 10, 0.45);
-}
-.cb-druid .cb-title { color: #FF7C0A; text-shadow: 0 0 10px rgba(255, 124, 10, 0.4); }
-
-/* Kart Üst Alanı */
-.cb-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 8px;
-}
-.cb-header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.cb-class-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  border: 1px solid #6e5031;
-}
-.cb-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin: 0;
-}
-.cb-arrow-icon {
-  width: 16px;
-  height: 16px;
-  opacity: 0.5;
-}
-
-/* Kart İç Gövde */
-.cb-body {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 12px;
-  align-items: start;
-}
-
-.cb-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.spec-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  color: #dfcfb8;
-  white-space: nowrap;
-}
-.spec-ico {
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  border: 1px solid #4a3828;
-  flex-shrink: 0;
-}
-
-.cb-right-col {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.race-avatars-row {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.race-avatar-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid #57412f;
-  border-radius: 5px;
-  padding: 4px 6px;
-  min-width: 82px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-.race-avatar-box img.race-img {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  border: 1px solid #826038;
-  object-fit: cover;
-  margin-bottom: 2px;
-}
-.race-avatar-name {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #dfcfb8;
-  line-height: 1.1;
-}
-
-.race-avatar-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: 3px;
-  width: 100%;
-}
-.race-avatar-sub-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  font-size: 0.60rem;
-  color: #a89885;
-  line-height: 1;
-}
-.sub-spec-ico {
-  width: 11px;
-  height: 11px;
-  border-radius: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  flex-shrink: 0;
-}
-
-/* Meslek Rozetleri */
-.cb-prof-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 4px 6px;
-  border-radius: 4px;
-}
-.cb-prof-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #dfcfb8;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2px 6px;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.cb-prof-badge img {
-  width: 14px;
-  height: 14px;
-  border-radius: 2px;
-}
-
-.cb-desc-text {
-  font-size: 0.73rem;
-  line-height: 1.35;
-  color: #bfaea0;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 6px 8px;
-  border-radius: 4px;
-  border-left: 2px solid #826038;
-}
-
-/* ==========================================================================
-   HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ
-   ========================================================================== */
-.races-summary-section {
-  margin-bottom: 24px;
-  background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
-  border: 1px solid #3d2f24;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
-  width: 100%;
-}
-
-.races-summary-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 10px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.races-summary-header h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #f7d58b;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.races-summary-header span {
-  font-size: 0.75rem;
-  color: #a89885;
-}
-
-.races-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-
-.race-card {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.race-card:hover {
-  transform: translateY(-2px);
-  border-color: #826038;
-}
-
-.race-card-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 6px;
-}
-
-.race-card-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  border: 1px solid #826038;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.race-card-title {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #dfcfb8;
-  line-height: 1.1;
-}
-
-.race-traits-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.trait-item {
-  font-size: 0.68rem;
-  line-height: 1.35;
-  color: #a89885;
-  background: rgba(255, 255, 255, 0.02);
-  padding: 5px 6px;
-  border-radius: 4px;
-  border-left: 2px solid #57412f;
-}
-
-/* Tek Satırda Kalan ve Aşağı Taşmayan Başlık Satırı */
-.trait-item strong {
-  color: #dfcfb8;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  flex-wrap: nowrap !important;
-  gap: 4px !important;
-  font-size: 0.69rem !important;
-  margin-bottom: 3px !important;
-  width: 100% !important;
-  white-space: nowrap !important;
-}
-
-.trait-tag {
-  display: inline-flex !important;
-  font-size: 0.52rem !important;
-  font-weight: 700 !important;
-  padding: 1px 3px !important;
-  border-radius: 2px !important;
-  flex-shrink: 0 !important;
-}
-
-.tag-active {
-  background: rgba(198, 155, 109, 0.2);
-  color: #f7d58b;
-  border: 1px solid rgba(198, 155, 109, 0.4);
-}
-
-.tag-passive {
-  background: rgba(63, 199, 235, 0.15);
-  color: #3FC7EB;
-  border: 1px solid rgba(63, 199, 235, 0.3);
-}
-
-/* Süre ve CD Rozeti (Sağa Yaslı, Tek Satır) */
-.trait-timer {
-  display: inline-flex !important;
-  font-size: 0.54rem !important;
-  font-weight: 700 !important;
-  color: #f7d58b !important;
-  background: rgba(247, 213, 139, 0.1) !important;
-  border: 1px solid rgba(247, 213, 139, 0.25) !important;
-  padding: 1px 4px !important;
-  border-radius: 2px !important;
-  letter-spacing: 0.1px !important;
-  margin-left: auto !important;
-  flex-shrink: 0 !important;
-  white-space: nowrap !important;
-}
-
-.trait-patch {
-  color: #e5b067;
-  font-size: 0.64rem;
-  font-style: italic;
-  display: block;
-  margin-top: 2px;
-}
-
-/* ==========================================================================
-   ALT PANELLER (MASAÜSTÜNDE HEPSİ ALT ALTA VE TAM GENİŞLİKTE)
-   ========================================================================== */
-.bottom-panels-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-}
-
-.bottom-panel {
-  background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
-  border: 1px solid #3d2f24;
-  border-radius: 8px;
-  padding: 18px 22px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.bottom-panel .panel-header-block {
-  width: 100%;
-  margin-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 8px;
-}
-.bottom-panel h3 {
-  font-size: 1.10rem;
-  font-weight: 800;
-  color: #f7d58b;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin: 0;
-  display: block;
-}
-
-#panel-sinif-analiz {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  width: 100% !important;
-}
-
-.panel-race-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-.panel-race-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-.panel-race-item img {
-  width: 26px;
-  height: 26px;
-  border-radius: 4px;
-  border: 1px solid #826038;
-  object-fit: cover;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.panel-race-info strong {
-  display: block;
-  font-size: 0.84rem;
-  color: #dfcfb8;
-  margin-bottom: 2px;
-}
-.panel-race-info p {
-  margin: 0;
-  font-size: 0.76rem;
-  line-height: 1.35;
-  color: #9c8c7d;
-}
-
-.panel-prof-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-.panel-prof-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-.panel-prof-item img {
-  width: 26px;
-  height: 26px;
-  border-radius: 4px;
-  border: 1px solid #826038;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.panel-prof-info strong {
-  display: block;
-  font-size: 0.84rem;
-  color: #dfcfb8;
-  margin-bottom: 2px;
-}
-.panel-prof-info p {
-  margin: 0;
-  font-size: 0.76rem;
-  line-height: 1.35;
-  color: #9c8c7d;
-}
-
-/* Hazırlık Prensipleri Liste Maddeleri (Biraz Büyütüldü ve Boşluk Arttırıldı) */
-.panel-checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.panel-checklist li {
-  position: relative;
-  padding-left: 24px;
-  font-size: 0.82rem;
-  color: #c4b5a5;
-  line-height: 1.45;
-}
-.panel-checklist li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 15px;
-  height: 15px;
-  background: #2b7a4b;
-  color: #ffffff;
-  border-radius: 50%;
-  font-size: 0.58rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bottom-panels-paired {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
-}
-
-/* Discord İmzası */
-.guide-signature-wrap {
-  margin-top: 45px;
-  text-align: center;
-  position: relative;
-  padding-top: 20px;
-}
-.guide-signature-wrap::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #826038 50%, transparent 100%);
-}
-.signature-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(14, 11, 10, 0.85);
-  border: 1px solid #4a3828;
-  padding: 8px 20px;
-  border-radius: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-  font-size: 0.85rem;
-  color: #a89885;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-}
-.signature-discord-link {
-  color: #f7d58b;
-  font-weight: 800;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.25s ease;
-  text-shadow: 0 0 8px rgba(247, 213, 139, 0.3);
-}
-.signature-discord-link:hover {
-  color: #ffffff;
-  text-shadow: 0 0 12px rgba(88, 101, 242, 0.9), 0 0 18px rgba(247, 213, 139, 0.8);
-  transform: translateY(-1px);
-}
-.signature-discord-link svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-/* ==========================================================================
-   YALNIZCA MOBİL & TABLET UYARLAMASI (<= 1100px)
-   ========================================================================== */
-@media (max-width: 1100px) {
-  .guide-class-grid { 
-    grid-template-columns: repeat(2, 1fr); 
-    display: contents;
+  <style>
+  /* ==========================================================================
+     SAYFA GENELİ SIFIRLAMA & NOIR / KARANLIK MOD KORUMASI
+     ========================================================================== */
+  html {
+    scroll-behavior: smooth;
   }
-
-  .guide-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .guide-top-bar {
-    grid-column: 1 / -1;
-    order: 1;
-  }
-
-  .cb-warrior { order: 2; }
-  .cb-paladin { order: 3; }
-  .cb-rogue   { order: 4; }
-  .cb-hunter  { order: 5; }
-  .cb-priest  { order: 6; }
-  .cb-shaman  { order: 7; }
-  .cb-mage    { order: 8; }
-  .cb-warlock { order: 9; }
-  .cb-druid   { order: 10; }
-
-  /* Sınıf Bazlı Analiz: YALNIZCA MOBİLDE Druid'in yanına (11. sıra) geçer */
-  #panel-sinif-analiz {
-    display: flex !important;
-    flex-direction: column !important;
-    order: 11 !important;
+  html, body {
     margin: 0 !important;
+    padding: 0 !important;
+    background-color: #050404 !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
+    border: none !important;
+    outline: none !important;
+    color-scheme: dark !important;
+  }
+
+  /* ==========================================================================
+     TURKS VE ANADOLU - WOW FOREVER PVE REHBERİ
+     ========================================================================== */
+  .guild-guide-section {
+    width: 100%;
+    margin: 0;
+    padding: 25px 20px 60px 20px;
+    background-color: #050404;
+    position: relative;
+    z-index: 1;
+    color: #dfcfb8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  /* iOS Safari & Noir Korumalı Sabit Arka Plan */
+  .guild-guide-section::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background-image: url('assets/img/wow-forever-bg.webp');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    filter: none !important;
+    -webkit-filter: none !important;
+    mix-blend-mode: normal !important;
+    isolation: isolate;
+  }
+
+  /* Karartma ve Degrade Katmanı */
+  .guild-guide-section::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: 
+      linear-gradient(90deg, rgba(5, 4, 4, 0.45) 0%, rgba(10, 8, 7, 0.82) 40%, rgba(5, 4, 4, 0.96) 100%),
+      radial-gradient(circle at 50% 10%, rgba(20, 15, 12, 0.45) 0%, rgba(5, 4, 4, 0.92) 80%);
+    pointer-events: none;
+  }
+
+  .guild-guide-section *, 
+  .guild-guide-section *::before, 
+  .guild-guide-section *::after {
+    box-sizing: inherit;
+  }
+  .guide-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  /* ==========================================================================
+     TEMAYA UYUMLU ÜST MENÜ (NAVBAR)
+     ========================================================================== */
+  .guide-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: linear-gradient(180deg, rgba(24, 18, 14, 0.96) 0%, rgba(11, 8, 7, 0.98) 100%);
+    border: 1px solid #57412f;
+    border-radius: 40px;
+    padding: 6px 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(247, 213, 139, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 15px;
+    z-index: 100;
+  }
+  .nav-link {
+    color: #dfcfb8;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .nav-link:hover {
+    color: #f7d58b;
+    background: rgba(130, 96, 56, 0.25);
+    border-color: rgba(247, 213, 139, 0.3);
+    text-shadow: 0 0 8px rgba(247, 213, 139, 0.6);
+  }
+
+  /* Üst Başlık Şeridi */
+  .guide-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  .top-bar-left h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #f7d58b;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  }
+  .top-bar-left p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #a89885;
+  }
+  .top-bar-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .top-bar-logo {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(0, 162, 232, 0.4));
+  }
+
+  /* 9 Sınıf Kart Grid */
+  .guide-class-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+    scroll-margin-top: 85px;
+  }
+  .class-box {
+    border-radius: 8px;
     padding: 14px 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 0;
+  }
+  .class-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
   }
 
-  #panel-sinif-analiz .panel-header-block {
-    margin-bottom: 10px;
+  /* Sınıf Renk Degradeleri */
+  .cb-warrior {
+    background: radial-gradient(circle at top left, rgba(198, 155, 109, 0.22) 0%, rgba(198, 155, 109, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(28, 22, 18, 0.95) 0%, rgba(13, 10, 9, 0.98) 100%);
+    border: 1px solid rgba(198, 155, 109, 0.45);
+  }
+  .cb-warrior .cb-title { color: #C69B6D; text-shadow: 0 0 10px rgba(198, 155, 109, 0.4); }
+
+  .cb-paladin {
+    background: radial-gradient(circle at top left, rgba(244, 140, 186, 0.22) 0%, rgba(244, 140, 186, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(28, 18, 24, 0.95) 0%, rgba(13, 9, 12, 0.98) 100%);
+    border: 1px solid rgba(244, 140, 186, 0.45);
+  }
+  .cb-paladin .cb-title { color: #F48CBA; text-shadow: 0 0 10px rgba(244, 140, 186, 0.4); }
+
+  .cb-rogue {
+    background: radial-gradient(circle at top left, rgba(255, 244, 104, 0.20) 0%, rgba(255, 244, 104, 0.04) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(26, 25, 16, 0.95) 0%, rgba(12, 12, 8, 0.98) 100%);
+    border: 1px solid rgba(255, 244, 104, 0.45);
+  }
+  .cb-rogue .cb-title { color: #FFF468; text-shadow: 0 0 10px rgba(255, 244, 104, 0.4); }
+
+  .cb-hunter {
+    background: radial-gradient(circle at top left, rgba(170, 211, 114, 0.22) 0%, rgba(170, 211, 114, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(20, 26, 17, 0.95) 0%, rgba(9, 13, 8, 0.98) 100%);
+    border: 1px solid rgba(170, 211, 114, 0.45);
+  }
+  .cb-hunter .cb-title { color: #AAD372; text-shadow: 0 0 10px rgba(170, 211, 114, 0.4); }
+
+  .cb-priest {
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(24, 24, 26, 0.95) 0%, rgba(11, 11, 12, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+  }
+  .cb-priest .cb-title { color: #FFFFFF; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+
+  .cb-shaman {
+    background: radial-gradient(circle at top left, rgba(0, 112, 221, 0.25) 0%, rgba(0, 112, 221, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(14, 21, 28, 0.95) 0%, rgba(7, 10, 14, 0.98) 100%);
+    border: 1px solid rgba(0, 112, 221, 0.5);
+  }
+  .cb-shaman .cb-title { color: #0070DD; text-shadow: 0 0 10px rgba(0, 112, 221, 0.4); }
+
+  .cb-mage {
+    background: radial-gradient(circle at top left, rgba(63, 199, 235, 0.22) 0%, rgba(63, 199, 235, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(16, 24, 28, 0.95) 0%, rgba(8, 12, 14, 0.98) 100%);
+    border: 1px solid rgba(63, 199, 235, 0.45);
+  }
+  .cb-mage .cb-title { color: #3FC7EB; text-shadow: 0 0 10px rgba(63, 199, 235, 0.4); }
+
+  .cb-warlock {
+    background: radial-gradient(circle at top left, rgba(135, 136, 238, 0.22) 0%, rgba(135, 136, 238, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(21, 18, 28, 0.95) 0%, rgba(10, 9, 14, 0.98) 100%);
+    border: 1px solid rgba(135, 136, 238, 0.45);
+  }
+  .cb-warlock .cb-title { color: #8788EE; text-shadow: 0 0 10px rgba(135, 136, 238, 0.4); }
+
+  .cb-druid {
+    background: radial-gradient(circle at top left, rgba(255, 124, 10, 0.22) 0%, rgba(255, 124, 10, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
+                linear-gradient(180deg, rgba(28, 20, 15, 0.95) 0%, rgba(13, 9, 7, 0.98) 100%);
+    border: 1px solid rgba(255, 124, 10, 0.45);
+  }
+  .cb-druid .cb-title { color: #FF7C0A; text-shadow: 0 0 10px rgba(255, 124, 10, 0.4); }
+
+  /* Kart Üst Alanı */
+  .cb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+  }
+  .cb-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cb-class-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid #6e5031;
+  }
+  .cb-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .cb-arrow-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+  }
+
+  /* Kart İç Gövde */
+  .cb-body {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .cb-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .spec-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: #dfcfb8;
+    white-space: nowrap;
+  }
+  .spec-ico {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid #4a3828;
+    flex-shrink: 0;
+  }
+
+  .cb-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .race-avatars-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .race-avatar-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid #57412f;
+    border-radius: 5px;
+    padding: 4px 6px;
+    min-width: 82px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .race-avatar-box img.race-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #826038;
+    object-fit: cover;
+    margin-bottom: 2px;
+  }
+  .race-avatar-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #dfcfb8;
+    line-height: 1.1;
+  }
+
+  .race-avatar-specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 3px;
+    width: 100%;
+  }
+  .race-avatar-sub-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 0.60rem;
+    color: #a89885;
+    line-height: 1;
+  }
+  .sub-spec-ico {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
+
+  /* Meslek Rozetleri */
+  .cb-prof-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 6px;
+    border-radius: 4px;
+  }
+  .cb-prof-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #dfcfb8;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .cb-prof-badge img {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+  }
+
+  .cb-desc-text {
+    font-size: 0.73rem;
+    line-height: 1.35;
+    color: #bfaea0;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #826038;
+  }
+
+  /* ==========================================================================
+     HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ
+     ========================================================================== */
+  .races-summary-section {
+    margin-bottom: 24px;
+    background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
+    border: 1px solid #3d2f24;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    box-sizing: border-box;
+    scroll-margin-top: 85px;
+  }
+
+  .races-summary-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .races-summary-header h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #f7d58b;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .races-summary-header span {
+    font-size: 0.75rem;
+    color: #a89885;
+  }
+
+  .races-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+
+  .race-card {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .race-card:hover {
+    transform: translateY(-2px);
+    border-color: #826038;
+  }
+
+  .race-card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 6px;
   }
 
-  #panel-sinif-analiz h3 {
-    font-size: 1.05rem;
+  .race-card-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid #826038;
+    object-fit: cover;
+    flex-shrink: 0;
   }
 
-  /* Irk Detayları Paneli: Sınıf seçimlerinden sonra tam genişlikte yer alır */
-  .races-summary-section {
-    grid-column: 1 / -1;
-    order: 12;
-    margin-top: 10px;
-    margin-bottom: 16px;
+  .race-card-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #dfcfb8;
+    line-height: 1.1;
   }
 
-  .races-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .race-traits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
+  .trait-item {
+    font-size: 0.68rem;
+    line-height: 1.35;
+    color: #a89885;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 5px 6px;
+    border-radius: 4px;
+    border-left: 2px solid #57412f;
+  }
+
+  .trait-item strong {
+    color: #dfcfb8;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    font-size: 0.68rem !important;
+    margin-bottom: 3px !important;
+    width: 100% !important;
+  }
+
+  .trait-head-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .trait-tag {
+    display: inline-flex !important;
+    font-size: 0.52rem !important;
+    font-weight: 700 !important;
+    padding: 1px 3px !important;
+    border-radius: 2px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .tag-active {
+    background: rgba(198, 155, 109, 0.2);
+    color: #f7d58b;
+    border: 1px solid rgba(198, 155, 109, 0.4);
+  }
+
+  .tag-passive {
+    background: rgba(63, 199, 235, 0.15);
+    color: #3FC7EB;
+    border: 1px solid rgba(63, 199, 235, 0.3);
+  }
+
+  .trait-timer {
+    display: inline-flex !important;
+    font-size: 0.54rem !important;
+    font-weight: 700 !important;
+    color: #f7d58b !important;
+    background: rgba(247, 213, 139, 0.1) !important;
+    border: 1px solid rgba(247, 213, 139, 0.25) !important;
+    padding: 1px 4px !important;
+    border-radius: 2px !important;
+    letter-spacing: 0.1px !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .trait-patch {
+    color: #e5b067;
+    font-size: 0.64rem;
+    font-style: italic;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ==========================================================================
+     ALT PANELLER
+     ========================================================================== */
   .bottom-panels-wrapper {
-    grid-column: 1 / -1;
-    order: 13;
-    display: contents;
-  }
-
-  /* Meslek Sinerjisi ve Hazırlık Prensipleri mobilde yan yana 2 kutu olur */
-  .bottom-panels-paired {
-    grid-column: 1 / -1;
-    order: 14;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
+    display: flex;
+    flex-direction: column;
     gap: 16px;
+    width: 100%;
   }
 
-  .guide-signature-wrap {
-    grid-column: 1 / -1;
-    order: 15;
+  .bottom-panel {
+    background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
+    border: 1px solid #3d2f24;
+    border-radius: 8px;
+    padding: 18px 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    scroll-margin-top: 85px;
   }
-}
 
-@media (max-width: 768px) {
-  .guild-guide-section {
-    padding: 35px 12px 50px 12px;
+  .bottom-panel .panel-header-block {
+    width: 100%;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
   }
-  .guide-container {
+  .bottom-panel h3 {
+    font-size: 1.10rem;
+    font-weight: 800;
+    color: #f7d58b;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin: 0;
+    display: block;
+  }
+
+  #panel-sinif-analiz {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+  }
+
+  .panel-race-list {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
-  .guide-top-bar { 
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center;
-    gap: 15px; 
+  .panel-race-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
   }
-  .top-bar-left h2 { font-size: 1.7rem; }
-  .top-bar-right { text-align: center; }
-  .top-bar-logo { max-width: 180px; }
+  .panel-race-item img {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid #826038;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .panel-race-info strong {
+    display: block;
+    font-size: 0.84rem;
+    color: #dfcfb8;
+    margin-bottom: 2px;
+  }
+  .panel-race-info p {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: #9c8c7d;
+  }
 
-  .cb-body { grid-template-columns: 95px 1fr; gap: 8px; }
-  .race-avatar-box { min-width: 68px; padding: 3px 4px; }
-  .race-avatar-box img.race-img { width: 28px; height: 28px; }
-
-  .races-grid {
-    grid-template-columns: 1fr;
+  .panel-prof-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
   }
-  
+  .panel-prof-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .panel-prof-item img {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid #826038;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .panel-prof-info strong {
+    display: block;
+    font-size: 0.84rem;
+    color: #dfcfb8;
+    margin-bottom: 2px;
+  }
+  .panel-prof-info p {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: #9c8c7d;
+  }
+
+  /* Hazırlık Prensipleri */
+  .panel-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .panel-checklist li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 0.82rem;
+    color: #c4b5a5;
+    line-height: 1.45;
+  }
+  .panel-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 15px;
+    height: 15px;
+    background: #2b7a4b;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 0.58rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .bottom-panels-paired {
-    gap: 10px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
   }
-  .bottom-panel { padding: 12px; }
-  .bottom-panel h3 { font-size: 0.90rem; margin-bottom: 8px; }
-  .panel-race-info strong, .panel-prof-info strong { font-size: 0.74rem; }
-  .panel-race-info p, .panel-prof-info p { font-size: 0.67rem; }
-  .panel-checklist li { font-size: 0.72rem; padding-left: 20px; }
-}
-</style>
 
-<!-- GÖVDE BAŞLANGIÇ -->
+  /* ==========================================================================
+     DÜZELTİLEN DİSCORD İMZASI (SİYAM ASLA KAYBOLMAZ)
+     ========================================================================== */
+  .guide-signature-wrap {
+    margin-top: 45px;
+    text-align: center;
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+  }
+  .guide-signature-wrap::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #826038 50%, transparent 100%);
+  }
+  .signature-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: rgba(14, 11, 10, 0.92) !important;
+    border: 1px solid #57412f !important;
+    padding: 8px 22px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8) !important;
+    font-size: 0.85rem !important;
+    color: #a89885 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+  }
+  .signature-discord-link {
+    color: #f7d58b !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.25s ease !important;
+    text-shadow: 0 0 8px rgba(247, 213, 139, 0.35) !important;
+  }
+  .signature-discord-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(88, 101, 242, 0.9), 0 0 18px rgba(247, 213, 139, 0.8) !important;
+    transform: translateY(-1px);
+  }
+  .signature-discord-link svg {
+    width: 17px !important;
+    height: 17px !important;
+    fill: currentColor !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ==========================================================================
+     GARANTİLİ YUKARI ÇIK BUTONU (SCROLL TO TOP)
+     ========================================================================== */
+  .scroll-top-btn {
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(20, 15, 12, 0.95) !important;
+    border: 1px solid #826038 !important;
+    border-radius: 50% !important;
+    color: #f7d58b !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.9) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease !important;
+    z-index: 99999 !important;
+  }
+  .scroll-top-btn.visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .scroll-top-btn:hover {
+    background: #826038 !important;
+    color: #050404 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 22px rgba(247, 213, 139, 0.45) !important;
+  }
+  .scroll-top-btn svg {
+    width: 22px !important;
+    height: 22px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 2.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+  /* ==========================================================================
+     YALNIZCA MOBİL & TABLET UYARLAMASI (<= 1100px)
+     ========================================================================== */
+  @media (max-width: 1100px) {
+    .guide-class-grid { 
+      grid-template-columns: repeat(2, 1fr); 
+      display: contents;
+    }
+
+    .guide-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .guide-nav-bar {
+      grid-column: 1 / -1;
+      order: 1;
+    }
+
+    .guide-top-bar {
+      grid-column: 1 / -1;
+      order: 2;
+    }
+
+    .cb-warrior { order: 3; }
+    .cb-paladin { order: 4; }
+    .cb-rogue   { order: 5; }
+    .cb-hunter  { order: 6; }
+    .cb-priest  { order: 7; }
+    .cb-shaman  { order: 8; }
+    .cb-mage    { order: 9; }
+    .cb-warlock { order: 10; }
+    .cb-druid   { order: 11; }
+
+    #panel-sinif-analiz {
+      display: flex !important;
+      flex-direction: column !important;
+      order: 12 !important;
+      margin: 0 !important;
+      padding: 14px 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+    }
+
+    #panel-sinif-analiz .panel-header-block {
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+    }
+
+    #panel-sinif-analiz h3 {
+      font-size: 1.05rem;
+    }
+
+    .races-summary-section {
+      grid-column: 1 / -1;
+      order: 13;
+      margin-top: 10px;
+      margin-bottom: 16px;
+    }
+
+    .races-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bottom-panels-wrapper {
+      grid-column: 1 / -1;
+      order: 14;
+      display: contents;
+    }
+
+    .bottom-panels-paired {
+      grid-column: 1 / -1;
+      order: 15;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 16px;
+    }
+
+    .guide-signature-wrap {
+      grid-column: 1 / -1;
+      order: 16;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .guild-guide-section {
+      padding: 20px 12px 50px 12px;
+    }
+    .guide-container {
+      gap: 10px;
+    }
+    .guide-nav-bar {
+      gap: 4px;
+      padding: 5px 8px;
+    }
+    .nav-link {
+      font-size: 0.68rem;
+      padding: 4px 8px;
+    }
+    .guide-top-bar { 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center;
+      gap: 15px; 
+    }
+    .top-bar-left h2 { font-size: 1.7rem; }
+    .top-bar-right { text-align: center; }
+    .top-bar-logo { max-width: 180px; }
+
+    .cb-body { grid-template-columns: 95px 1fr; gap: 8px; }
+    .race-avatar-box { min-width: 68px; padding: 3px 4px; }
+    .race-avatar-box img.race-img { width: 28px; height: 28px; }
+
+    .races-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .bottom-panels-paired {
+      gap: 10px !important;
+    }
+    .bottom-panel { padding: 12px; }
+    .bottom-panel h3 { font-size: 0.90rem; margin-bottom: 8px; }
+    .panel-race-info strong, .panel-prof-info strong { font-size: 0.74rem; }
+    .panel-race-info p, .panel-prof-info p { font-size: 0.67rem; }
+    .panel-checklist li { font-size: 0.72rem; padding-left: 20px; }
+    
+    .scroll-top-btn {
+      bottom: 18px !important;
+      right: 18px !important;
+      width: 40px !important;
+      height: 40px !important;
+    }
+  }
+  </style>
+</head>
+<body>
+
 <section id="rehber" class="guild-guide-section">
   <div class="guide-container">
+
+    <!-- TEMAYA UYGUN ÜST MENÜ -->
+    <nav class="guide-nav-bar">
+      <a href="#siniflar" class="nav-link">Sınıflar</a>
+      <a href="#irk-ozellikleri" class="nav-link">Irk Dengeleri</a>
+      <a href="#panel-sinif-analiz" class="nav-link">Sınıf Analizi</a>
+      <a href="#panel-meslek-sinerjisi" class="nav-link">Meslek Sinerjisi</a>
+      <a href="#panel-hazirlik-prensipleri" class="nav-link">Hazırlık Prensipleri</a>
+    </nav>
 
     <!-- Üst Başlık Şeridi -->
     <div class="guide-top-bar">
@@ -857,7 +999,7 @@ html, body {
     </div>
 
     <!-- 1. BÖLÜM: 9 SINIF KARTI -->
-    <div class="guide-class-grid">
+    <div id="siniflar" class="guide-class-grid">
 
       <!-- 1. WARRIOR -->
       <article class="class-box cb-warrior">
@@ -1448,7 +1590,7 @@ html, body {
     </div>
 
     <!-- 2. BÖLÜM: HORDE IRK DETAYLARI PANELİ -->
-    <div class="races-summary-section">
+    <div id="irk-ozellikleri" class="races-summary-section">
       <div class="races-summary-header">
         <h3>Horde Irk Özellikleri ve Dengelemeleri</h3>
         <span>Güncel Yama Notları</span>
@@ -1465,28 +1607,28 @@ html, body {
           <div class="race-traits-list">
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Blood Fury
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Blood Fury</span>
                 <span class="trait-timer">15 sn / 3 dk CD</span>
               </strong>
               15 saniye boyunca Saldırı Gücünü (AP) ve Büyü Gücünü (SP) %10 artırır.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Shatter Curse
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Shatter Curse</span>
                 <span class="trait-timer">8 sn / 2 dk CD</span>
               </strong>
               Lanetleri kaldırır ve 8 saniye boyunca alınan büyü hasarını azaltır.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Command
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Command</span>
               </strong>
               Hunter ve Warlock evcil hayvanlarının (pet) hasarını %5 artırır.
               <span class="trait-patch">%1 crit yerine klasik hali getirildi; petli sınıflarda BiS.</span>
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Hardiness
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Hardiness</span>
               </strong>
               Karakterin maruz kaldığı sersemletme (stun) sürelerini %20 kısaltır.
             </div>
@@ -1502,28 +1644,28 @@ html, body {
           <div class="race-traits-list">
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>WotF
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>WotF</span>
                 <span class="trait-timer">5 sn Bağışıklık / 2 dk CD</span>
               </strong>
               Büyü, korku (fear) ve uyku (sleep) etkilerini anında temizler.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Cannibalize
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Cannibalize</span>
                 <span class="trait-timer">10 sn Kanal / 2 dk CD</span>
               </strong>
               Yakındaki cesedi yiyerek toplam can ve mananın %35'ini yeniler.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Touch of the Grave
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Touch of the Grave</span>
               </strong>
               Saldırı ve büyülere Shadow hasarı ve can çalma ekler.
               <span class="trait-patch">İstemsiz tetiklenmeyi önlemek için 25 sn ICD eklendi.</span>
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Underwater Breathing
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Underwater Breathing</span>
               </strong>
               Su altında nefes alma süresini %300 uzatır.
             </div>
@@ -1539,7 +1681,7 @@ html, body {
           <div class="race-traits-list">
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>War Stomp
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>War Stomp</span>
                 <span class="trait-timer">2 sn Stun / 90 sn CD</span>
               </strong>
               Yakındaki 5 düşmanı 2 saniye boyunca sersemletir.
@@ -1547,21 +1689,21 @@ html, body {
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Cultivation
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Cultivation</span>
                 <span class="trait-timer">15 sn Toplama / 2 dk CD</span>
               </strong>
               Meslek sınırı olmadan haritadaki bonus bitkileri (herbs) toplatır.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Plainsrunning
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Plainsrunning</span>
               </strong>
               Hareket halinde kaldıkça koşma hızını kademeli %60'a çıkarır.
               <span class="trait-patch">Hız sınırı %30'dan %60'a çıkarıldı.</span>
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Endurance
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Endurance</span>
               </strong>
               Toplam can değerini %5 artırır.
               <span class="trait-patch">%2 kritik hasar bonusu kaldırıldı.</span>
@@ -1578,7 +1720,7 @@ html, body {
           <div class="race-traits-list">
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Berserking
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Berserking</span>
                 <span class="trait-timer">15 sn / 3 dk CD</span>
               </strong>
               Saldırı ve büyü yapma hızını (Haste) %10 artırır.
@@ -1586,20 +1728,20 @@ html, body {
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Rapid Regeneration
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Rapid Regeneration</span>
                 <span class="trait-timer">Savaş Dışı / 3 dk CD</span>
               </strong>
               Savaş dışındayken maksimum sağlığın %50'sini hızlıca doldurur.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Regeneration
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Regeneration</span>
               </strong>
               HP yenilenmesi %20 artar; %20'si savaş esnasında da sürer.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Beast Slaying
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Beast Slaying</span>
               </strong>
               Canavarlara (Beast) karşı verilen hasarı %5 artırır.
             </div>
@@ -1615,28 +1757,28 @@ html, body {
           <div class="race-traits-list">
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Levitation
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Levitation</span>
                 <span class="trait-timer">15 sn Süzülme / 1 dk CD</span>
               </strong>
               Yüksek yerlerden hasar almadan aşağı süzülme avantajı sunar.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-active">Aktif</span>Skysight
+                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Skysight</span>
                 <span class="trait-timer">1 sa Şarj / 2 dk CD</span>
               </strong>
               Açık dünya hızını %15 artırır. Şarjla (Charged) ölümle silinmeyen 1 sa %30 hız verir.
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Wind Blessed
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Wind Blessed</span>
               </strong>
               Yakın dövüş, menzilli ve büyü hızını (Haste) %2 artırır.
               <span class="trait-patch">%3'ten %2'ye düşürüldü.</span>
             </div>
             <div class="trait-item">
               <strong>
-                <span class="trait-tag tag-passive">Pasif</span>Elemental Insight
+                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Elemental Insight</span>
               </strong>
               Elementallere karşı %5 hasar artışı verir.
             </div>
@@ -1646,7 +1788,7 @@ html, body {
       </div>
     </div>
 
-    <!-- 3. BÖLÜM: MASAÜSTÜNDE ALT ALTA DURAN PANELLER (SINIF BAZLI ANALİZ VE DİĞERLERİ) -->
+    <!-- 3. BÖLÜM: MASAÜSTÜNDE ALT ALTA DURAN PANELLER -->
     <div class="bottom-panels-wrapper">
 
       <!-- 1. KUTU: SINIF BAZLI ANALİZ -->
@@ -1751,7 +1893,7 @@ html, body {
 
     </div>
 
-    <!-- Discord İmzası -->
+    <!-- DÜZELTİLEN DİSCORD İMZASI (SİYAM) -->
     <div class="guide-signature-wrap">
       <div class="signature-badge">
         <span>Created by</span>
@@ -1766,4 +1908,39 @@ html, body {
 
   </div>
 </section>
-<!-- GÖVDE BİTİŞ -->
+
+<!-- YUKARI ÇIK BUTONU -->
+<button id="scrollTopBtn" class="scroll-top-btn" title="Yukarı Çık" aria-label="Yukarı Çık">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+  // Sayfa Kaydırma & Yukarı Çık Dinleyicisi
+  (function() {
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    if (!scrollBtn) return;
+
+    function handleScroll() {
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      if (scrollPosition > 250) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('scroll', handleScroll, { passive: true });
+
+    scrollBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
