@@ -479,6 +479,7 @@
     width: 100%;
   }
 
+  /* Irk Kartı ve Tıklanınca İşaretlenme Efekti (:target) */
   .race-card {
     background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -488,7 +489,7 @@
     flex-direction: column;
     gap: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
     min-width: 0;
     overflow: hidden;
     scroll-margin-top: 90px;
@@ -497,6 +498,14 @@
   .race-card:hover {
     transform: translateY(-2px);
     border-color: #826038;
+  }
+
+  /* IRK AVATARINA TIKLANDIĞINDA ALTIN VURGU */
+  .race-card:target {
+    background: rgba(247, 213, 139, 0.08) !important;
+    border-color: #f7d58b !important;
+    box-shadow: 0 0 22px rgba(247, 213, 139, 0.4), 0 4px 16px rgba(0, 0, 0, 0.85) !important;
+    transform: translateY(-3px);
   }
 
   .race-card-head {
@@ -607,7 +616,9 @@
     margin-top: 3px;
   }
 
-  /* Alt Paneller */
+  /* ==========================================================================
+     ALT PANELLER
+     ========================================================================== */
   .bottom-panels-wrapper {
     display: flex;
     flex-direction: column;
@@ -690,19 +701,28 @@
     gap: 12px;
     width: 100%;
   }
+
+  /* Meslek Kartı ve Tıklanınca İşaretlenme Efekti (:target) */
   .panel-prof-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     scroll-margin-top: 90px;
-    padding: 6px;
-    border-radius: 4px;
-    transition: background 0.25s ease;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   }
+
+  /* MESLEK ROZETİNE TIKLANDIĞINDA AYNI ALTIN VURGU */
   .panel-prof-item:target {
-    background: rgba(247, 213, 139, 0.08);
-    outline: 1px solid rgba(247, 213, 139, 0.3);
+    background: rgba(247, 213, 139, 0.08) !important;
+    border-color: #f7d58b !important;
+    box-shadow: 0 0 22px rgba(247, 213, 139, 0.4), 0 4px 16px rgba(0, 0, 0, 0.85) !important;
+    transform: translateY(-2px);
   }
+
   .panel-prof-item img {
     width: 26px;
     height: 26px;
