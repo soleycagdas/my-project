@@ -30,9 +30,8 @@
   }
 
   /* ==========================================================================
-     GARANTİLİ ARKA PLAN KATMANLARI (HER YERDE GÖRÜNÜR)
+     ARKA PLAN KATMANLARI (NOIR KORUMALI)
      ========================================================================== */
-  /* 1. Katman: Doğrudan Görsel (Z-INDEX: 0) */
   .bg-fixed-img {
     position: fixed !important;
     top: 0 !important;
@@ -50,7 +49,6 @@
     -webkit-transform: translateZ(0) !important;
   }
 
-  /* 2. Katman: Karartma ve Degrade (Z-INDEX: 1) */
   .bg-fixed-overlay {
     position: fixed !important;
     top: 0 !important;
@@ -65,7 +63,7 @@
   }
 
   /* ==========================================================================
-     TURKS VE ANADOLU - WOW FOREVER PVE REHBERİ (Z-INDEX: 2)
+     TURKS VE ANADOLU - WOW FOREVER PVE REHBERİ
      ========================================================================== */
   .guild-guide-section {
     width: 100%;
@@ -92,9 +90,7 @@
     width: 100%;
   }
 
-  /* ==========================================================================
-     TEMAYA UYUMLU ÜST MENÜ (NAVBAR)
-     ========================================================================== */
+  /* Üst Menü (Navbar) */
   .guide-nav-bar {
     display: flex;
     align-items: center;
@@ -192,7 +188,7 @@
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
   }
 
-  /* Sınıf Renk Degradeleri */
+  /* Sınıf Renk Temaları */
   .cb-warrior {
     background: radial-gradient(circle at top left, rgba(198, 155, 109, 0.22) 0%, rgba(198, 155, 109, 0.05) 50%, rgba(14, 11, 10, 0.96) 80%),
                 linear-gradient(180deg, rgba(28, 22, 18, 0.95) 0%, rgba(13, 10, 9, 0.98) 100%);
@@ -256,7 +252,7 @@
   }
   .cb-druid .cb-title { color: #FF7C0A; text-shadow: 0 0 10px rgba(255, 124, 10, 0.4); }
 
-  /* Kart Üst Alanı */
+  /* Kart İçi Detaylar */
   .cb-header {
     display: flex;
     align-items: center;
@@ -289,7 +285,6 @@
     opacity: 0.5;
   }
 
-  /* Kart İç Gövde */
   .cb-body {
     display: grid;
     grid-template-columns: 120px 1fr;
@@ -330,6 +325,8 @@
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+
+  /* Tıklanabilir Irk Kutucukları */
   .race-avatar-box {
     display: flex;
     flex-direction: column;
@@ -340,6 +337,14 @@
     padding: 4px 6px;
     min-width: 82px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    text-decoration: none !important;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .race-avatar-box:hover {
+    transform: translateY(-2px);
+    border-color: #f7d58b;
+    box-shadow: 0 4px 12px rgba(247, 213, 139, 0.25);
   }
   .race-avatar-box img.race-img {
     width: 32px;
@@ -354,6 +359,9 @@
     font-weight: 700;
     color: #dfcfb8;
     line-height: 1.1;
+  }
+  .race-avatar-box:hover .race-avatar-name {
+    color: #f7d58b;
   }
 
   .race-avatar-specs-list {
@@ -380,7 +388,7 @@
     flex-shrink: 0;
   }
 
-  /* Meslek Rozetleri */
+  /* Tıklanabilir Meslek Rozetleri */
   .cb-prof-row {
     display: flex;
     align-items: center;
@@ -402,6 +410,15 @@
     padding: 2px 6px;
     border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .cb-prof-badge:hover {
+    color: #f7d58b;
+    border-color: #f7d58b;
+    background: rgba(247, 213, 139, 0.12);
+    transform: translateY(-1px);
   }
   .cb-prof-badge img {
     width: 14px;
@@ -419,9 +436,7 @@
     border-left: 2px solid #826038;
   }
 
-  /* ==========================================================================
-     HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ
-     ========================================================================== */
+  /* Irklar Özeti */
   .races-summary-section {
     margin-bottom: 24px;
     background: linear-gradient(180deg, rgba(20, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
@@ -476,6 +491,7 @@
     transition: transform 0.2s ease, border-color 0.2s ease;
     min-width: 0;
     overflow: hidden;
+    scroll-margin-top: 90px;
   }
 
   .race-card:hover {
@@ -526,7 +542,6 @@
     gap: 3px;
   }
 
-  /* 1. SATIR: Etiket + Yetenek Adı */
   .trait-title-row {
     display: flex;
     align-items: center;
@@ -557,7 +572,6 @@
     border: 1px solid rgba(63, 199, 235, 0.3);
   }
 
-  /* 2. SATIR: Süre ve CD Rozeti */
   .trait-timer-row {
     display: flex;
     align-items: center;
@@ -593,9 +607,7 @@
     margin-top: 3px;
   }
 
-  /* ==========================================================================
-     ALT PANELLER
-     ========================================================================== */
+  /* Alt Paneller */
   .bottom-panels-wrapper {
     display: flex;
     flex-direction: column;
@@ -682,6 +694,14 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    scroll-margin-top: 90px;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background 0.25s ease;
+  }
+  .panel-prof-item:target {
+    background: rgba(247, 213, 139, 0.08);
+    outline: 1px solid rgba(247, 213, 139, 0.3);
   }
   .panel-prof-item img {
     width: 26px;
@@ -704,7 +724,6 @@
     color: #9c8c7d;
   }
 
-  /* Hazırlık Prensipleri */
   .panel-checklist {
     list-style: none;
     padding: 0;
@@ -744,9 +763,7 @@
     width: 100%;
   }
 
-  /* ==========================================================================
-     DİSCORD İMZASI (SİYAM)
-     ========================================================================== */
+  /* Discord İmzası (Siyam) */
   .guide-signature-wrap {
     margin-top: 45px;
     text-align: center;
@@ -801,9 +818,7 @@
     flex-shrink: 0 !important;
   }
 
-  /* ==========================================================================
-     GARANTİLİ YUKARI ÇIK BUTONU (SCROLL TO TOP)
-     ========================================================================== */
+  /* Yukarı Çık Butonu */
   .scroll-top-btn {
     position: fixed !important;
     bottom: 25px !important;
@@ -844,9 +859,7 @@
     stroke-linejoin: round !important;
   }
 
-  /* ==========================================================================
-     TABLET DÜZENİ (769px - 1100px: 2 SÜTUN)
-     ========================================================================== */
+  /* Tablet Düzeni (769px - 1100px) */
   @media (min-width: 769px) and (max-width: 1100px) {
     .guide-class-grid { 
       grid-template-columns: repeat(2, 1fr); 
@@ -912,9 +925,7 @@
     }
   }
 
-  /* ==========================================================================
-     TELEFON DÜZENİ (<= 768px: KESİNLİKLE TEK SÜTUN / TEKER TEKER)
-     ========================================================================== */
+  /* Telefon Düzeni (<= 768px: Teker Teker) */
   @media (max-width: 768px) {
     .guild-guide-section {
       padding: 20px 12px 50px 12px;
@@ -949,7 +960,6 @@
     .top-bar-right { text-align: center; }
     .top-bar-logo { max-width: 170px; }
 
-    /* SINIF KARTLARI TEKER TEKER SIRALANIR */
     .guide-class-grid {
       display: flex !important;
       flex-direction: column !important;
@@ -981,7 +991,6 @@
       line-height: 1.4 !important;
     }
 
-    /* IRKLAR PANELİ MOBİL */
     .races-summary-section {
       padding: 14px !important;
       margin-bottom: 14px !important;
@@ -991,7 +1000,6 @@
       gap: 10px !important;
     }
 
-    /* ALT PANELLER MOBİL */
     .bottom-panels-wrapper {
       display: flex !important;
       flex-direction: column !important;
@@ -1032,7 +1040,7 @@
 <section id="rehber" class="guild-guide-section">
   <div class="guide-container">
 
-    <!-- TEMAYA UYGUN ÜST MENÜ -->
+    <!-- ÜST MENÜ -->
     <nav class="guide-nav-bar">
       <a href="#siniflar" class="nav-link">Sınıflar</a>
       <a href="#irk-ozellikleri" class="nav-link">Irk Dengeleri</a>
@@ -1052,7 +1060,7 @@
       </div>
     </div>
 
-    <!-- 1. BÖLÜM: 9 SINIF KARTI (TELEFONDA TEKER TEKER SIRALANIR) -->
+    <!-- 1. BÖLÜM: 9 SINIF KARTI -->
     <div id="siniflar" class="guide-class-grid">
 
       <!-- 1. WARRIOR -->
@@ -1084,7 +1092,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-skyborne" class="race-avatar-box" title="Skyborne ırk detaylarını görüntüle">
                   <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-img">
                   <span class="race-avatar-name">Skyborne</span>
                   <div class="race-avatar-specs-list">
@@ -1097,8 +1105,8 @@
                       Arms
                     </span>
                   </div>
-                </div>
-                <div class="race-avatar-box">
+                </a>
+                <a href="#race-tauren" class="race-avatar-box" title="Tauren ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" alt="Tauren" class="race-img">
                   <span class="race-avatar-name">Tauren</span>
                   <div class="race-avatar-specs-list">
@@ -1107,12 +1115,16 @@
                       Protection
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing"> Blacksmithing</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-blacksmithing" class="cb-prof-badge" title="Blacksmithing sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing"> Blacksmithing
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1152,7 +1164,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-undead" class="race-avatar-box" title="Undead ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead" class="race-img">
                   <span class="race-avatar-name">Undead</span>
                   <div class="race-avatar-specs-list">
@@ -1169,12 +1181,16 @@
                       Holy
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing"> Blacksmithing</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-blacksmithing" class="cb-prof-badge" title="Blacksmithing sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing"> Blacksmithing
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1214,7 +1230,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-skyborne" class="race-avatar-box" title="Skyborne ırk detaylarını görüntüle">
                   <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-img">
                   <span class="race-avatar-name">Skyborne</span>
                   <div class="race-avatar-specs-list">
@@ -1231,12 +1247,16 @@
                       Subtlety
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-leatherworking" class="cb-prof-badge" title="Leatherworking sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1276,7 +1296,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-orc" class="race-avatar-box" title="Orc ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" alt="Orc" class="race-img">
                   <span class="race-avatar-name">Orc</span>
                   <div class="race-avatar-specs-list">
@@ -1285,8 +1305,8 @@
                       Beast Mastery
                     </span>
                   </div>
-                </div>
-                <div class="race-avatar-box">
+                </a>
+                <a href="#race-skyborne" class="race-avatar-box" title="Skyborne ırk detaylarını görüntüle">
                   <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-img">
                   <span class="race-avatar-name">Skyborne</span>
                   <div class="race-avatar-specs-list">
@@ -1299,12 +1319,16 @@
                       Survival
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-leatherworking" class="cb-prof-badge" title="Leatherworking sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1344,7 +1368,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-undead" class="race-avatar-box" title="Undead ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead" class="race-img">
                   <span class="race-avatar-name">Undead</span>
                   <div class="race-avatar-specs-list">
@@ -1361,12 +1385,16 @@
                       Discipline
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring"> Tailoring</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-tailoring" class="cb-prof-badge" title="Tailoring sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring"> Tailoring
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1406,7 +1434,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-skyborne" class="race-avatar-box" title="Skyborne ırk detaylarını görüntüle">
                   <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-img">
                   <span class="race-avatar-name">Skyborne</span>
                   <div class="race-avatar-specs-list">
@@ -1419,8 +1447,8 @@
                       Enhancement
                     </span>
                   </div>
-                </div>
-                <div class="race-avatar-box">
+                </a>
+                <a href="#race-troll" class="race-avatar-box" title="Troll ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" alt="Troll" class="race-img">
                   <span class="race-avatar-name">Troll</span>
                   <div class="race-avatar-specs-list">
@@ -1429,12 +1457,16 @@
                       Restoration
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-leatherworking" class="cb-prof-badge" title="Leatherworking sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1474,7 +1506,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-undead" class="race-avatar-box" title="Undead ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead" class="race-img">
                   <span class="race-avatar-name">Undead</span>
                   <div class="race-avatar-specs-list">
@@ -1491,12 +1523,16 @@
                       Arcane
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring"> Tailoring</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-tailoring" class="cb-prof-badge" title="Tailoring sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring"> Tailoring
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1536,7 +1572,7 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-orc" class="race-avatar-box" title="Orc ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" alt="Orc" class="race-img">
                   <span class="race-avatar-name">Orc</span>
                   <div class="race-avatar-specs-list">
@@ -1553,12 +1589,16 @@
                       Destruction
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring"> Tailoring</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-tailoring" class="cb-prof-badge" title="Tailoring sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring"> Tailoring
+                </a>
               </div>
 
               <div class="cb-desc-text">
@@ -1583,12 +1623,16 @@
           <div class="cb-body">
             <div class="cb-specs">
               <div class="spec-row">
-                <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="Feral Tank" class="spec-ico">
-                <span>Feral Tank</span>
+                <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_starfall.jpg" alt="Balance" class="spec-ico">
+                <span>Balance</span>
               </div>
               <div class="spec-row">
-                <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg" alt="Feral DPS" class="spec-ico">
-                <span>Feral DPS</span>
+                <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg" alt="Feral Cat" class="spec-ico">
+                <span>Feral Cat</span>
+              </div>
+              <div class="spec-row">
+                <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="Feral Bear" class="spec-ico">
+                <span>Feral Bear</span>
               </div>
               <div class="spec-row">
                 <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg" alt="Restoration" class="spec-ico">
@@ -1598,43 +1642,47 @@
 
             <div class="cb-right-col">
               <div class="race-avatars-row">
-                <div class="race-avatar-box">
+                <a href="#race-skyborne" class="race-avatar-box" title="Skyborne ırk detaylarını görüntüle">
                   <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-img">
                   <span class="race-avatar-name">Skyborne</span>
                   <div class="race-avatar-specs-list">
                     <span class="race-avatar-sub-item">
-                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg" alt="Cat" class="sub-spec-ico">
-                      Cat
-                    </span>
-                    <span class="race-avatar-sub-item">
                       <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_starfall.jpg" alt="Balance" class="sub-spec-ico">
                       Balance
+                    </span>
+                    <span class="race-avatar-sub-item">
+                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_druid_catform.jpg" alt="Feral Cat" class="sub-spec-ico">
+                      Feral Cat
                     </span>
                     <span class="race-avatar-sub-item">
                       <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/spell_nature_healingtouch.jpg" alt="Restoration" class="sub-spec-ico">
                       Restoration
                     </span>
                   </div>
-                </div>
-                <div class="race-avatar-box">
+                </a>
+                <a href="#race-tauren" class="race-avatar-box" title="Tauren ırk detaylarını görüntüle">
                   <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" alt="Tauren" class="race-img">
                   <span class="race-avatar-name">Tauren</span>
                   <div class="race-avatar-specs-list">
                     <span class="race-avatar-sub-item">
-                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="Bear" class="sub-spec-ico">
-                      Bear
+                      <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/ability_racial_bearform.jpg" alt="Feral Bear" class="sub-spec-ico">
+                      Feral Bear
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               <div class="cb-prof-row">
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering</span>
-                <span class="cb-prof-badge"><img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking</span>
+                <a href="#prof-engineering" class="cb-prof-badge" title="Engineering sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering"> Engineering
+                </a>
+                <a href="#prof-leatherworking" class="cb-prof-badge" title="Leatherworking sinerjisini görüntüle">
+                  <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking"> Leatherworking
+                </a>
               </div>
 
               <div class="cb-desc-text">
-                Bear formunda Tauren can havuzu (%5 Endurance) kritiktir; Cat, Balance ve Restoration rollerinde Skyborne haste artırır. Leatherworking ve Engineering en ideal ikilidir.
+                Feral Bear formunda Tauren can havuzu (%5 Endurance) kritiktir; Feral Cat, Balance ve Restoration rollerinde Skyborne haste artırır. Leatherworking ve Engineering en ideal ikilidir.
               </div>
             </div>
           </div>
@@ -1653,7 +1701,7 @@
       <div class="races-grid">
 
         <!-- 1. ORC -->
-        <div class="race-card">
+        <div class="race-card" id="race-orc">
           <div class="race-card-head">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_orc_male.jpg" alt="Orc" class="race-card-icon">
             <span class="race-card-title">Orc</span>
@@ -1703,7 +1751,7 @@
         </div>
 
         <!-- 2. UNDEAD -->
-        <div class="race-card">
+        <div class="race-card" id="race-undead">
           <div class="race-card-head">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_scourge_male.jpg" alt="Undead" class="race-card-icon">
             <span class="race-card-title">Undead</span>
@@ -1753,7 +1801,7 @@
         </div>
 
         <!-- 3. TAUREN -->
-        <div class="race-card">
+        <div class="race-card" id="race-tauren">
           <div class="race-card-head">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_tauren_male.jpg" alt="Tauren" class="race-card-icon">
             <span class="race-card-title">Tauren</span>
@@ -1805,7 +1853,7 @@
         </div>
 
         <!-- 4. TROLL -->
-        <div class="race-card">
+        <div class="race-card" id="race-troll">
           <div class="race-card-head">
             <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/race_troll_male.jpg" alt="Troll" class="race-card-icon">
             <span class="race-card-title">Troll</span>
@@ -1855,7 +1903,7 @@
         </div>
 
         <!-- 5. SKYBORNE -->
-        <div class="race-card">
+        <div class="race-card" id="race-skyborne">
           <div class="race-card-head">
             <img src="assets/img/race_skyborne_male.webp" alt="Skyborne" class="race-card-icon">
             <span class="race-card-title">Skyborne</span>
@@ -1963,28 +2011,28 @@
             <h3>Meslek Sinerjisi</h3>
           </div>
           <div class="panel-prof-list">
-            <div class="panel-prof-item">
+            <div class="panel-prof-item" id="prof-engineering">
               <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="Engineering">
               <div class="panel-prof-info">
                 <strong>Engineering</strong>
                 <p>Nitro Boosts, kemer eklentileri, patlayıcılar ve vazgeçilmez raid utility desteği sağlar.</p>
               </div>
             </div>
-            <div class="panel-prof-item">
+            <div class="panel-prof-item" id="prof-blacksmithing">
               <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg" alt="Blacksmithing">
               <div class="panel-prof-info">
                 <strong>Blacksmithing</strong>
                 <p>Warrior ve Paladin için erken aşamada yüksek nitelikli plate craft zırh ve silah üretir.</p>
               </div>
             </div>
-            <div class="panel-prof-item">
+            <div class="panel-prof-item" id="prof-leatherworking">
               <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg" alt="Leatherworking">
               <div class="panel-prof-info">
                 <strong>Leatherworking</strong>
                 <p>Rogue, Hunter, Shaman ve Druid sınıflarına yüksek statlı leather ve mail craft parçaları sağlar.</p>
               </div>
             </div>
-            <div class="panel-prof-item">
+            <div class="panel-prof-item" id="prof-tailoring">
               <img src="https://wsrv.nl/?url=https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg" alt="Tailoring">
               <div class="panel-prof-info">
                 <strong>Tailoring</strong>
