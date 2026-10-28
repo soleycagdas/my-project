@@ -422,7 +422,7 @@
   }
 
   /* ==========================================================================
-     HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ
+     HORDE IRK YETENEKLERİ & DENGELEMELERİ PANELİ (İÇ İÇE GEÇME KESİN ÇÖZÜLDÜ)
      ========================================================================== */
   .races-summary-section {
     margin-bottom: 24px;
@@ -520,37 +520,31 @@
     line-height: 1.35;
     color: #a89885;
     background: rgba(255, 255, 255, 0.02);
-    padding: 5px 6px;
+    padding: 6px 7px;
     border-radius: 4px;
     border-left: 2px solid #57412f;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
   }
 
-  .trait-item strong {
-    color: #dfcfb8;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 4px !important;
-    font-size: 0.68rem !important;
-    margin-bottom: 3px !important;
-    width: 100% !important;
-  }
-
-  .trait-head-left {
-    display: inline-flex;
+  /* 1. SATIR: Etiket + Yetenek Adı */
+  .trait-title-row {
+    display: flex;
     align-items: center;
-    gap: 4px;
-    min-width: 0;
-    white-space: nowrap;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #dfcfb8;
   }
 
   .trait-tag {
-    display: inline-flex !important;
-    font-size: 0.52rem !important;
-    font-weight: 700 !important;
-    padding: 1px 3px !important;
-    border-radius: 2px !important;
-    flex-shrink: 0 !important;
+    display: inline-flex;
+    font-size: 0.52rem;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
   }
 
   .tag-active {
@@ -565,26 +559,40 @@
     border: 1px solid rgba(63, 199, 235, 0.3);
   }
 
+  /* 2. SATIR: Süre ve CD Rozeti (Asla İsmin Üstüne Binemez) */
+  .trait-timer-row {
+    display: flex;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: 2px;
+  }
+
   .trait-timer {
-    display: inline-flex !important;
-    font-size: 0.54rem !important;
-    font-weight: 700 !important;
-    color: #f7d58b !important;
-    background: rgba(247, 213, 139, 0.1) !important;
-    border: 1px solid rgba(247, 213, 139, 0.25) !important;
-    padding: 1px 4px !important;
-    border-radius: 2px !important;
-    letter-spacing: 0.1px !important;
-    flex-shrink: 0 !important;
-    white-space: nowrap !important;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: #f7d58b;
+    background: rgba(247, 213, 139, 0.12);
+    border: 1px solid rgba(247, 213, 139, 0.28);
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.2px;
+  }
+
+  .trait-desc {
+    margin: 0;
+    font-size: 0.67rem;
+    line-height: 1.35;
+    color: #a89885;
   }
 
   .trait-patch {
     color: #e5b067;
-    font-size: 0.64rem;
+    font-size: 0.63rem;
     font-style: italic;
     display: block;
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
   /* ==========================================================================
@@ -739,7 +747,7 @@
   }
 
   /* ==========================================================================
-     DÜZELTİLEN DİSCORD İMZASI (SİYAM ASLA KAYBOLMAZ)
+     DİSCORD İMZASI (SİYAM)
      ========================================================================== */
   .guide-signature-wrap {
     margin-top: 45px;
@@ -1605,33 +1613,46 @@
             <span class="race-card-title">Orc</span>
           </div>
           <div class="race-traits-list">
+            
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Blood Fury</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Blood Fury</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">15 sn / 3 dk CD</span>
-              </strong>
-              15 saniye boyunca Saldırı Gücünü (AP) ve Büyü Gücünü (SP) %10 artırır.
+              </div>
+              <p class="trait-desc">15 saniye boyunca Saldırı Gücünü (AP) ve Büyü Gücünü (SP) %10 artırır.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Shatter Curse</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Shatter Curse</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">8 sn / 2 dk CD</span>
-              </strong>
-              Lanetleri kaldırır ve 8 saniye boyunca alınan büyü hasarını azaltır.
+              </div>
+              <p class="trait-desc">Lanetleri kaldırır ve 8 saniye boyunca alınan büyü hasarını azaltır.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Command</span>
-              </strong>
-              Hunter ve Warlock evcil hayvanlarının (pet) hasarını %5 artırır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Command</span>
+              </div>
+              <p class="trait-desc">Hunter ve Warlock evcil hayvanlarının (pet) hasarını %5 artırır.</p>
               <span class="trait-patch">%1 crit yerine klasik hali getirildi; petli sınıflarda BiS.</span>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Hardiness</span>
-              </strong>
-              Karakterin maruz kaldığı sersemletme (stun) sürelerini %20 kısaltır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Hardiness</span>
+              </div>
+              <p class="trait-desc">Karakterin maruz kaldığı sersemletme (stun) sürelerini %20 kısaltır.</p>
             </div>
+
           </div>
         </div>
 
@@ -1642,33 +1663,46 @@
             <span class="race-card-title">Undead</span>
           </div>
           <div class="race-traits-list">
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>WotF</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>WotF</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">5 sn Bağışıklık / 2 dk CD</span>
-              </strong>
-              Büyü, korku (fear) ve uyku (sleep) etkilerini anında temizler.
+              </div>
+              <p class="trait-desc">Büyü, korku (fear) ve uyku (sleep) etkilerini anında temizler.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Cannibalize</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Cannibalize</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">10 sn Kanal / 2 dk CD</span>
-              </strong>
-              Yakındaki cesedi yiyerek toplam can ve mananın %35'ini yeniler.
+              </div>
+              <p class="trait-desc">Yakındaki cesedi yiyerek toplam can ve mananın %35'ini yeniler.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Touch of the Grave</span>
-              </strong>
-              Saldırı ve büyülere Shadow hasarı ve can çalma ekler.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Touch of the Grave</span>
+              </div>
+              <p class="trait-desc">Saldırı ve büyülere Shadow hasarı ve can çalma ekler.</p>
               <span class="trait-patch">İstemsiz tetiklenmeyi önlemek için 25 sn ICD eklendi.</span>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Underwater Breathing</span>
-              </strong>
-              Su altında nefes alma süresini %300 uzatır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Underwater Breathing</span>
+              </div>
+              <p class="trait-desc">Su altında nefes alma süresini %300 uzatır.</p>
             </div>
+
           </div>
         </div>
 
@@ -1679,35 +1713,48 @@
             <span class="race-card-title">Tauren</span>
           </div>
           <div class="race-traits-list">
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>War Stomp</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>War Stomp</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">2 sn Stun / 90 sn CD</span>
-              </strong>
-              Yakındaki 5 düşmanı 2 saniye boyunca sersemletir.
+              </div>
+              <p class="trait-desc">Yakındaki 5 düşmanı 2 saniye boyunca sersemletir.</p>
               <span class="trait-patch">Bekleme süresi son dengelemeyle 90 saniyeye düşürüldü.</span>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Cultivation</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Cultivation</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">15 sn Toplama / 2 dk CD</span>
-              </strong>
-              Meslek sınırı olmadan haritadaki bonus bitkileri (herbs) toplatır.
+              </div>
+              <p class="trait-desc">Meslek sınırı olmadan haritadaki bonus bitkileri (herbs) toplatır.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Plainsrunning</span>
-              </strong>
-              Hareket halinde kaldıkça koşma hızını kademeli %60'a çıkarır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Plainsrunning</span>
+              </div>
+              <p class="trait-desc">Hareket halinde kaldıkça koşma hızını kademeli %60'a çıkarır.</p>
               <span class="trait-patch">Hız sınırı %30'dan %60'a çıkarıldı.</span>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Endurance</span>
-              </strong>
-              Toplam can değerini %5 artırır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Endurance</span>
+              </div>
+              <p class="trait-desc">Toplam can değerini %5 artırır.</p>
               <span class="trait-patch">%2 kritik hasar bonusu kaldırıldı.</span>
             </div>
+
           </div>
         </div>
 
@@ -1718,33 +1765,46 @@
             <span class="race-card-title">Troll</span>
           </div>
           <div class="race-traits-list">
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Berserking</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Berserking</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">15 sn / 3 dk CD</span>
-              </strong>
-              Saldırı ve büyü yapma hızını (Haste) %10 artırır.
+              </div>
+              <p class="trait-desc">Saldırı ve büyü yapma hızını (Haste) %10 artırır.</p>
               <span class="trait-patch">Süresi 10 saniyeden 15 saniyeye çıkarıldı.</span>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Rapid Regeneration</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Rapid Regeneration</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">Savaş Dışı / 3 dk CD</span>
-              </strong>
-              Savaş dışındayken maksimum sağlığın %50'sini hızlıca doldurur.
+              </div>
+              <p class="trait-desc">Savaş dışındayken maksimum sağlığın %50'sini hızlıca doldurur.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Regeneration</span>
-              </strong>
-              HP yenilenmesi %20 artar; %20'si savaş esnasında da sürer.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Regeneration</span>
+              </div>
+              <p class="trait-desc">HP yenilenmesi %20 artar; %20'si savaş esnasında da sürer.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Beast Slaying</span>
-              </strong>
-              Canavarlara (Beast) karşı verilen hasarı %5 artırır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Beast Slaying</span>
+              </div>
+              <p class="trait-desc">Canavarlara (Beast) karşı verilen hasarı %5 artırır.</p>
             </div>
+
           </div>
         </div>
 
@@ -1755,33 +1815,46 @@
             <span class="race-card-title">Skyborne</span>
           </div>
           <div class="race-traits-list">
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Levitation</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Levitation</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">15 sn Süzülme / 1 dk CD</span>
-              </strong>
-              Yüksek yerlerden hasar almadan aşağı süzülme avantajı sunar.
+              </div>
+              <p class="trait-desc">Yüksek yerlerden hasar almadan aşağı süzülme avantajı sunar.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-active">Aktif</span>Skysight</span>
+              <div class="trait-title-row">
+                <span class="trait-tag tag-active">Aktif</span>
+                <span>Skysight</span>
+              </div>
+              <div class="trait-timer-row">
                 <span class="trait-timer">1 sa Şarj / 2 dk CD</span>
-              </strong>
-              Açık dünya hızını %15 artırır. Şarjla (Charged) ölümle silinmeyen 1 sa %30 hız verir.
+              </div>
+              <p class="trait-desc">Açık dünya hızını %15 artırır. Şarjla (Charged) ölümle silinmeyen 1 sa %30 hız verir.</p>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Wind Blessed</span>
-              </strong>
-              Yakın dövüş, menzilli ve büyü hızını (Haste) %2 artırır.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Wind Blessed</span>
+              </div>
+              <p class="trait-desc">Yakın dövüş, menzilli ve büyü hızını (Haste) %2 artırır.</p>
               <span class="trait-patch">%3'ten %2'ye düşürüldü.</span>
             </div>
+
             <div class="trait-item">
-              <strong>
-                <span class="trait-head-left"><span class="trait-tag tag-passive">Pasif</span>Elemental Insight</span>
-              </strong>
-              Elementallere karşı %5 hasar artışı verir.
+              <div class="trait-title-row">
+                <span class="trait-tag tag-passive">Pasif</span>
+                <span>Elemental Insight</span>
+              </div>
+              <p class="trait-desc">Elementallere karşı %5 hasar artışı verir.</p>
             </div>
+
           </div>
         </div>
 
@@ -1893,7 +1966,7 @@
 
     </div>
 
-    <!-- DÜZELTİLEN DİSCORD İMZASI (SİYAM) -->
+    <!-- DİSCORD İMZASI (SİYAM) -->
     <div class="guide-signature-wrap">
       <div class="signature-badge">
         <span>Created by</span>
